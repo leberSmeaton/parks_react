@@ -2,11 +2,15 @@
 
 > _Nothing is better than a picnic in Vic!_
 
-Parks Victoria - Victorian State Government
+[Deployed Picnic Victoria App]()
+
+[PicnicVic Repo](https://github.com/PicnicVic) > [Parks Rails_API Repo](https://github.com/PicnicVic/Rails_API)
 
 ###### **ASSESSMENT:** Full Stack Application - Part B - for Coder Academy
 
 ###### **DEV TEAM:** Karla Tolentino, Ruilai Zhang, Matthew Liu, Bella Leber-Smeaton
+
+###### **For:** Parks Victoria - Victorian State Government
 
 ![website landing page screenshot]()
 
