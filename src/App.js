@@ -1,5 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getParkPosts } from './services/parkPostServices';
+import { GlobalStyle } from './styled-components/globalStyles';
+import { ListView } from './component/ListView';
+import NavBar from './component/NavBar';
+import Footer from './component/Footer';
+import MapView from './component/MapView';
+import About from './component/About';
+import SignIn from './component/SignIn';
 
 const App = () => {
   const [parkPosts, setParkPosts] = useState([]);
@@ -17,16 +25,19 @@ const App = () => {
   }, [])
 
   return (
-    <div >
-      The basic empty template
-      {
-      loading 
-      ?
-      (<p>Loading</p>)
-      :
-      (<p>Got Posts!</p>)
-      }
-    </div>
+    <>
+      <GlobalStyle />
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<MapView />}></Route>
+          <Route path="/" element={<ListView loading={loading} posts={parkPosts} />}></Route>
+          <Route path="/" element={<About />}></Route>
+          <Route path="/" element={<SignIn />}></Route>
+        </Routes>
+        <Footer />
+      </BrowserRouter>
+    </>
   )
 }
 
