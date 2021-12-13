@@ -30,9 +30,10 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
+          <Route path="/" element={<About />}></Route>
           <Route path="/" element={<MapView />}></Route>
           <Route path="/" element={<ListView loading={loading} posts={parkPosts} />}></Route>
-          <Route path="/" element={<About />}></Route>
+          
           <Route path="/" element={<SignIn />}></Route>
         </Routes>
         <Footer />

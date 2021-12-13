@@ -7,7 +7,7 @@ export default function SignIn() {
       <section>
         <h2>Sign In</h2>
         <div>
-          {/* <image></image> */}
+          <img src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" style={{ width: '100%' }} />
           <form>
 
           </form>
