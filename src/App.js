@@ -6,6 +6,8 @@ import { ListView } from './component/ListView';
 import NavBar from './component/NavBar';
 import Footer from './component/Footer';
 import MapView from './component/MapView';
+import About from './component/About';
+import SignIn from './component/SignIn';
 
 const App = () => {
   const [parkPosts, setParkPosts] = useState([]);
@@ -28,9 +30,10 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          
-          <Route path="/" element={<ListView loading={loading} posts={parkPosts} />}></Route>
           <Route path="/" element={<MapView />}></Route>
+          <Route path="/" element={<ListView loading={loading} posts={parkPosts} />}></Route>
+          <Route path="/" element={<About />}></Route>
+          <Route path="/" element={<SignIn />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
