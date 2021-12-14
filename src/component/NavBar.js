@@ -7,9 +7,9 @@ export default function NavBar() {
       <ul>
         <li><NavLink to="/">Picnic Victoria</NavLink></li>
         <li><NavLink to="/">Map</NavLink></li>
-        <li><NavLink to="/">List</NavLink></li>
-        <li><NavLink to="/">About</NavLink></li>
-        <li><NavLink to="/">Sign In</NavLink></li>  
+        <li><NavLink to="/list">List</NavLink></li>
+        <li><NavLink to="/about">About</NavLink></li>
+        <li><NavLink to="/signin">Sign In</NavLink></li>  
       </ul>
       
     </div>
