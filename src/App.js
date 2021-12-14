@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getParkPosts } from './services/parkPostServices';
+// tailwind css
+import './styles/output.css'
 import { GlobalStyle } from './styled-components/globalStyles';
 import { ListView } from './component/ListView';
 import NavBar from './component/NavBar';
@@ -9,6 +11,7 @@ import MapView from './component/MapView';
 import About from './component/About';
 import SignIn from './component/SignIn';
 import SignUp from './component/SignUp';
+
 
 const App = () => {
   const [parkPosts, setParkPosts] = useState([]);
