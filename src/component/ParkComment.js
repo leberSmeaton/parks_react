@@ -1,5 +1,6 @@
 import React from 'react'
 import Moment from 'react-moment';
+import ParkMakeComment from './ParkMakeComment';
 
 export default function ParkComment(props) {
   const { post } = props;
@@ -12,6 +13,7 @@ export default function ParkComment(props) {
           <h4>{post.comment}</h4>
         </li>
       </ul>
+      <ParkMakeComment />
     </>
   )
 }

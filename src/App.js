@@ -31,7 +31,6 @@ const App = () => {
       <BrowserRouter>
         <NavBar />
         <Routes>
-          <Route path="/" element={<About />}></Route>
           <Route path="/" element={<MapView />}></Route>
           <Route path="/list" element={<ListView loading={loading} posts={parkPosts} />}></Route>
           <Route path="/about" element={<About />}></Route>

@@ -17,36 +17,45 @@ export default function SignUp() {
             <div>
               <label>
                 Username
+                <input
+                  id="username"
+                  // value={username}
+                  // onChange={(e) => setUsername(e.currentTarget.value)}
+                />
               </label>
-              <input
-                id="username"
-                // value={username}
-                // onChange={(e) => setUsername(e.currentTarget.value)}
-              />
               <label>
                 Email
+                <input
+                  id="email"
+                  // value={email}
+                  // onChange={(e) => setEmail(e.currentTarget.value)}
+                />
               </label>
-              <input
-                id="email"
-                // value={email}
-                // onChange={(e) => setEmail(e.currentTarget.value)}
-              />
+              <label>
+                User Icon
+                <input
+                  type="file"
+                  id="icon"
+                  // value={icon}
+                  // onChange={(e) => setIcon(e.currentTarget.value)}
+                />
+              </label>
               <label>
                 Password
+                <input
+                  id="password"
+                  // value={password}
+                  // onChange={(e) => setPassword(e.currentTarget.value)}
+                />
               </label>
-              <input
-                id="password"
-                // value={password}
-                // onChange={(e) => setPassword(e.currentTarget.value)}
-              />
               <label>
                 Password Confirmation
+                <input
+                  id="password_confirmation"
+                  // value={password_confirmation}
+                  // onChange={(e) => setPassword(e.currentTarget.value)}
+                />
               </label>
-              <input
-                id="password_confirmation"
-                // value={password_confirmation}
-                // onChange={(e) => setPassword(e.currentTarget.value)}
-              />
               <button type="submit" className="primary">
                 Sign In
               </button>

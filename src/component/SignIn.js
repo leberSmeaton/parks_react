@@ -14,20 +14,28 @@ export default function SignIn() {
             <div>
               <label>
                 Username
+                <input
+                  id="username"
+                  // value={username}
+                  // onChange={(e) => setUsername(e.currentTarget.value)}
+                />
               </label>
-              <input
-                id="username"
-                // value={username}
-                // onChange={(e) => setUsername(e.currentTarget.value)}
-              />
               <label>
-                Email
+                Password
+                <input
+                  id="password"
+                  // value={password}
+                  // onChange={(e) => setPassword(e.currentTarget.value)}
+                />
               </label>
-              <input
-                id="email"
-                // value={email}
-                // onChange={(e) => setEmail(e.currentTarget.value)}
-              />
+              <label>
+                Password Confirmation
+                <input
+                  id="password_confirmation"
+                  // value={password_confirmation}
+                  // onChange={(e) => setPasswordConfirmation(e.currentTarget.value)}
+                />
+              </label>
               <button type="submit" className="primary">
                 Sign In
               </button>
