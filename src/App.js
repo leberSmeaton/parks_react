@@ -32,9 +32,9 @@ const App = () => {
         <Routes>
           <Route path="/" element={<About />}></Route>
           <Route path="/" element={<MapView />}></Route>
-          <Route path="/" element={<ListView loading={loading} posts={parkPosts} />}></Route>
-          
-          <Route path="/" element={<SignIn />}></Route>
+          <Route path="/list" element={<ListView loading={loading} posts={parkPosts} />}></Route>
+          <Route path="/about" element={<About />}></Route>
+          <Route path="/signin" element={<SignIn />}></Route>
         </Routes>
         <Footer />
       </BrowserRouter>
