@@ -23,9 +23,7 @@ const App = () => {
   }
 
   const [store, dispatch] = useReducer(reducer, initialState);
-  const {parkPosts} = store;
-  const {loading} = store;
-  const {parks} = store;
+  const {parkPosts, loading, parks} = store;
 
   const ParksContext = React.createContext()
 
