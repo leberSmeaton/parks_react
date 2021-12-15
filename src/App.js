@@ -10,14 +10,32 @@ import MapView from './component/MapView';
 import About from './component/About';
 import SignIn from './component/SignIn';
 import SignUp from './component/SignUp';
+import Dropdown from './component/Dropdown';
 
 
 const App = () => {
+  // hamburger menu toggle
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+  
   const [parkPosts, setParkPosts] = useState([]);
   // first things first, load
   const [loading, setLoading] = useState(true);
   
-  useEffect(() => {
+  useEffect( () => {
+    // hides dropdown menu when screen expands
+    const hideMenu = () => {
+      if(window.innerWidth > 768 && isOpen) {
+        setIsOpen(false);
+        console.log('resized');
+      }
+    };
+
+    window.addEventListener('resize', hideMenu);
+    
     getParkPosts()
       .then(posts => {
         console.log(posts)
@@ -25,13 +43,18 @@ const App = () => {
       })
       .catch(err => console.log(err))
       .finally(() => setLoading(false))
-  }, [])
+
+    return () => {
+      window.removeEventListener('resize', hideMenu);
+    }
+  })
 
   return (
     <>
       <GlobalStyle />
       <BrowserRouter>
-        <NavBar />
+        <NavBar toggle={toggle} />
+        <Dropdown isOpen={isOpen} toggle={toggle} />
         <Routes>
           <Route path="/" element={<MapView />}></Route>
           <Route path="/list" element={<ListView loading={loading} posts={parkPosts} />}></Route>
