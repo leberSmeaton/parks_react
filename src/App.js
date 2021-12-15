@@ -14,6 +14,7 @@ import Dropdown from './component/Dropdown';
 
 
 const App = () => {
+  // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => {
@@ -25,6 +26,7 @@ const App = () => {
   const [loading, setLoading] = useState(true);
   
   useEffect( () => {
+    // hides dropdown menu when screen expands
     const hideMenu = () => {
       if(window.innerWidth > 768 && isOpen) {
         setIsOpen(false);
@@ -33,9 +35,6 @@ const App = () => {
     };
 
     window.addEventListener('resize', hideMenu);
-    return () => {
-      window.removeEventListener('resize', hideMenu);
-    }
     
     getParkPosts()
       .then(posts => {
@@ -44,6 +43,10 @@ const App = () => {
       })
       .catch(err => console.log(err))
       .finally(() => setLoading(false))
+
+    return () => {
+      window.removeEventListener('resize', hideMenu);
+    }
   })
 
   return (
