@@ -1,8 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getParkPosts } from './services/parkPostServices';
-// tailwind css
-import './styles/output.css'
+import './style.css';
 import { GlobalStyle } from './styled-components/globalStyles';
 import { ListView } from './component/ListView';
 import NavBar from './component/NavBar';
@@ -30,6 +29,9 @@ const App = () => {
 
   return (
     <>
+    <h1 className="text-3xl font-bold underline">
+      Hello world!
+    </h1>
       <GlobalStyle />
       <BrowserRouter>
         <NavBar />
