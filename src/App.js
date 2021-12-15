@@ -1,7 +1,8 @@
-import React, { useEffect, useReducer } from 'react';
+import React, { useEffect, useState, useReducer } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getParkPosts } from './services/parkPostServices';
 import {getParks} from './services/parkServices';
+import './style.css';
 import { GlobalStyle } from './styled-components/globalStyles';
 import { ListView } from './component/ListView';
 import NavBar from './component/NavBar';
@@ -11,10 +12,10 @@ import About from './component/About';
 import SignIn from './component/SignIn';
 import SignUp from './component/SignUp';
 import reducer from './utils/reducer';
+import Dropdown from './component/Dropdown';
+
 
 const App = () => {
-  // const [parkPosts, setParkPosts] = useState([]);
-  // const [loading, setLoading] = useState(true);
 
   const initialState = {
     parkPosts: [],
@@ -27,7 +28,29 @@ const App = () => {
 
   const ParksContext = React.createContext()
 
-  // Posts data from parkPostServices.js
+  // hamburger menu toggle
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggle = () => {
+    setIsOpen(!isOpen);
+  };
+  
+  useEffect( () => {
+    // hides dropdown menu when screen expands
+    const hideMenu = () => {
+      if(window.innerWidth > 768 && isOpen) {
+        setIsOpen(false);
+        console.log('resized');
+      }
+    };
+
+    window.addEventListener('resize', hideMenu);
+    return () => {
+      window.removeEventListener('resize', hideMenu);
+    }
+  })
+  
+  // Park Post data from parkServices.js
   useEffect(() => {
     getParkPosts()
       .then(posts => {
@@ -70,7 +93,8 @@ const App = () => {
       <ParksContext.Provider value={parks}>
         <GlobalStyle />
         <BrowserRouter>
-          <NavBar />
+          <NavBar toggle={toggle} />
+          <Dropdown isOpen={isOpen} toggle={toggle} />
           <Routes>
             <Route path="/" element={<MapView />}></Route>
             <Route path="/list" element={<ListView loading={loading} posts={parkPosts} parks={parks} />}></Route>
