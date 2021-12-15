@@ -1,6 +1,14 @@
 import React from 'react'
 
 export default function ParkMakeComment() {
+  /* Adding a park post comment
+  function addParkPost(post) {
+    dispatch({
+      type: 'addParkPosts',
+      data: post
+    })
+  } */
+  
   return (
     <>
       {/* <form onSubmit={handleSubmit}> */}
