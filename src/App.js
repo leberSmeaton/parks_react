@@ -90,6 +90,36 @@ const App = () => {
       )
   }, [])
 
+  /* When the new park post is created, passing it back up to the top level in app to update the state.
+  But, how is this done using context?
+  */
+  // function addNewParkPost(parkPostObject) {
+  //   createNewParkPost(parkPostObject)
+  //     .then(newParkPost => setParkPosts([...parkPosts, newParkPost]))
+  //     .catch(error => console.log(error))
+  //     .finally(() => setLoading(false));
+  // }
+  /* MAYBE LIKE THIS ???
+  
+  useEffect(() => {
+    createNewParkPost(parkPostObject)
+      .then(parks => {
+        console.log(parks)
+        dispatch({
+          type: 'setParkPosts',
+          data: [...parkPosts, newParkPost]
+        })
+      })
+      .catch(err => console.log(err))
+      .finally(() => 
+        dispatch({
+          type: 'setLoading',
+          data: false
+        })  
+      )
+  }, [])
+  */
+
   return (
     <>
       <StateContext.Provider value={{ store: store, dispatch }}>
