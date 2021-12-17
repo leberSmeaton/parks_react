@@ -1,20 +1,30 @@
-import React from 'react'
+import React from 'react';
+// import { useGlobalState } from '../utils/stateContext';
 
 export default function ParkMakeComment() {
-  /* Adding a park post comment
-  function addParkPost(post) {
-    dispatch({
-      type: 'addParkPosts',
-      data: post
-    })
-  } */
+  
+  // const { store } = useGlobalState();
+  // console.log('store', store);
+  // const { post } = store;
+  
+  // // Adding a park post comment
+  // function addParkPost(post) {
+  //   dispatch({
+  //     type: 'addParkPosts',
+  //     data: post
+  //   })
+  // } 
   
   return (
     <>
       {/* <form onSubmit={handleSubmit}> */}
       <form>
         <label>Comment:
-          <textarea>Write Comment Here...</textarea>
+          <input
+            id="comment"
+            // value={username}
+            // onChange={(e) => setUsername(e.currentTarget.value)}
+          />
         </label>
         <br />
         <label>Upload images:

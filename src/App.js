@@ -1,10 +1,11 @@
 import React, { useEffect, useState, useReducer } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getParkPosts } from './services/parkPostServices';
-import {getParks} from './services/parkServices';
-import './style.css';
+import { getParks } from './services/parkServices';
 import { GlobalStyle } from './styled-components/globalStyles';
 import { ListView } from './component/ListView';
+import { StateContext } from './utils/stateContext';
+// import { useGlobalState } from './utils/stateContext';
 import NavBar from './component/NavBar';
 import Footer from './component/Footer';
 import MapView from './component/MapView';
@@ -13,6 +14,7 @@ import SignIn from './component/SignIn';
 import SignUp from './component/SignUp';
 import reducer from './utils/reducer';
 import Dropdown from './component/Dropdown';
+import './style.css';
 
 
 const App = () => {
@@ -24,9 +26,7 @@ const App = () => {
   }
 
   const [store, dispatch] = useReducer(reducer, initialState);
-  const {parkPosts, loading, parks} = store;
-
-  const ParksContext = React.createContext()
+  // const StateContext = React.createContext()
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
@@ -48,8 +48,10 @@ const App = () => {
     return () => {
       window.removeEventListener('resize', hideMenu);
     }
-  })
-  
+  }) 
+  // END hamburger menu toggle
+
+
   // Park Post data from parkServices.js
   useEffect(() => {
     getParkPosts()
@@ -90,21 +92,21 @@ const App = () => {
 
   return (
     <>
-      <ParksContext.Provider value={parks}>
+      <StateContext.Provider value={{ store: store, dispatch }}>
         <GlobalStyle />
         <BrowserRouter>
           <NavBar toggle={toggle} />
           <Dropdown isOpen={isOpen} toggle={toggle} />
           <Routes>
             <Route path="/" element={<MapView />}></Route>
-            <Route path="/list" element={<ListView loading={loading} posts={parkPosts} parks={parks} />}></Route>
+            <Route path="/list" element={<ListView />}></Route>
             <Route path="/about" element={<About />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
           </Routes>
           <Footer />
         </BrowserRouter>
-      </ParksContext.Provider>
+      </StateContext.Provider>
     </>
   )
 }

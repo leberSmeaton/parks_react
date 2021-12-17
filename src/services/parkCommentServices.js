@@ -1,3 +1,5 @@
+// not in use atm
+
 import posts from '../data/posts';
 
 export const getParkPosts = () => {
@@ -5,6 +7,6 @@ export const getParkPosts = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(posts)
-    }, 500)
+    }, 2000)
   })
 }

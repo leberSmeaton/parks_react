@@ -5,6 +5,6 @@ export const getParkPosts = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(posts)
-    }, 500)
+    }, 2000)
   })
 }

@@ -1,10 +1,18 @@
-import React from 'react'
-import { ParkItem } from './ParkItem'
+import React from 'react';
+import { ParkItem } from './ParkItem';
+import { useGlobalState } from '../utils/stateContext';
 
-export const ListView = (props) => {
-  const {loading, posts} = props
+export const ListView = () => {
+  
+  // const {loading, posts} = props
+
+  const {store} = useGlobalState();
+  // console.log('store', store);
+  const { loading, posts } = store;
+
   return (
     <>
+      <h2>All the parks</h2>
       {
       loading
       ?
@@ -12,6 +20,7 @@ export const ListView = (props) => {
       :
       (<div>
         {/* should be alphabetically */}
+        {/* {posts.sort((a , b) => b.updated_at - a.updated_at).map(post => (<ParkItem key={posts.id} post={post} />))} */}
         {posts.sort((a , b) => b.updated_at - a.updated_at).map(post => (<ParkItem key={posts.id} post={post} />))}
       </div>)
       }

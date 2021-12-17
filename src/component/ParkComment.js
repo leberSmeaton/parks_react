@@ -1,9 +1,15 @@
 import React from 'react'
 import Moment from 'react-moment';
 import ParkMakeComment from './ParkMakeComment';
+import {useGlobalState} from '../utils/stateContext'
 
-export default function ParkComment(props) {
-  const { post } = props;
+export default function ParkComment() {
+  // const { post } = props;
+
+  const { store } = useGlobalState();
+  console.log('store', store);
+  const { post } = store;
+
   return (
     <>
       <ul>

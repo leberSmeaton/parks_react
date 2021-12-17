@@ -5,6 +5,6 @@ export const getParks = () => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(parks)
-    }, 500)
+    }, 2000)
   })
 }
