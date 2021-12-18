@@ -8,11 +8,23 @@ import { useGlobalState } from '../utils/stateContext';
 export default function Park() {
   
   const {store} = useGlobalState();
+  // console.log('store', store);
   const {parks} = store;
-  console.log(parks + "parks are awesome");
+
+  // function ParkList() {
+  //   const listItems = parks.map((park) =>
+  //     <li key={park.id}>
+  //       {park.park_name}
+  //     </li>
+  //   );
+  //   return (
+  //     <ul>{listItems}</ul>
+  //   );
+  // }
 
   return (
     <>
+      {/* <ParkList parks={parks} /> */}
       <ul>
         <li>
           <p>🌴</p>

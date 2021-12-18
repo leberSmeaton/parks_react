@@ -100,7 +100,7 @@ const App = () => {
   //     .finally(() => setLoading(false));
   // }
   /* MAYBE LIKE THIS ???
-  
+
   useEffect(() => {
     createNewParkPost(parkPostObject)
       .then(parks => {
