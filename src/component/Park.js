@@ -9,7 +9,7 @@ export default function Park() {
   
   const {store} = useGlobalState();
   const {parks} = store;
-  console.log(parks);
+  console.log(parks + "parks are awesome");
 
   return (
     <>

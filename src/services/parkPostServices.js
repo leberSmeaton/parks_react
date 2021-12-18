@@ -1,11 +1,21 @@
 import posts from '../data/posts';
 
+// getParkPosts <-
 export const getParkPosts = () => {
   // faking a fetch request
   return new Promise((resolve, reject) => {
     setTimeout(() => {
       resolve(posts)
     }, 2000)
+  })
+}
+
+// getParkPost
+export const getParkPost = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(posts.find(post => post.id === parseInt(id)))
+    }, 500)
   })
 }
 

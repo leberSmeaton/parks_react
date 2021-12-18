@@ -43,32 +43,28 @@ export default function ParkMakeComment() {
     <>
       {/* <form id="addParkPost" onSubmit={handleSubmit}> */}
       <form>
-        <block>
-          <label>Comment:</label>
-          <textarea
-            id="park_comment"
-            from="addParkPost"
-            type="text"
-            name="park_comment"
-            placeholder="Enter park comment"
-            // value={parkPostState.park_comment}
-            // onChange={handleChange}
-          ></textarea>
-        </block>
+          <label>Comment:
+            <textarea
+              id="park_comment"
+              from="addParkPost"
+              type="text"
+              name="park_comment"
+              placeholder="Enter park comment"
+              // value={parkPostState.park_comment}
+              // onChange={handleChange}
+            ></textarea>
+          </label>
         <br />
-        <block>
-          <label>Upload images:</label>
-          <input 
-            type="file" 
-            name="park_image" 
-            // value={parkPostState.park_image}
-            // onChange={handleChange}
-          />
-        </block>
+          <label>Upload images:
+            <input 
+              type="file" 
+              name="park_image" 
+              // value={parkPostState.park_image}
+              // onChange={handleChange}
+            />
+          </label>
         <br />
-        <block>
           <button type="submit" value="Add Comment" className="primary" />
-        </block>
       </form>
     </>
   )
