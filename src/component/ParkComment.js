@@ -11,6 +11,7 @@ export default function ParkComment() {
   const { parkPosts } = store;
 
   function ParkCommentList(parkPosts) {
+    
     const content = parkPosts.posts.map((post) =>
       <div key={post.id}>
         <h4>username: {post.user_id} || park_name: {post.park_id}</h4>

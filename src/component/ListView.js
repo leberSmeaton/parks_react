@@ -21,11 +21,12 @@ export const ListView = () => {
       (<p>Loading</p>)
       :
       (<div>
-        {/* should be alphabetically */}
-        {/* {posts.sort((a , b) => b.updated_at - a.updated_at).map(post => (<ParkItem key={posts.id} post={post} />))} */}
+        {/* should be alphabetically by park name */}
+        
         {parkPosts.sort((a , b) => b.updated_at - a.updated_at).map(post => (<ParkItem key={parkPosts.id} post={post} />))}
         {/* {parks.sort((a , b) => b.updated_at - a.updated_at).map(park => (<ParkItem key={parks.id} park={park} />))} */}
         {/* {parks.sort().map(park => (<ParkItem key={parks.id} parks={park} />))} */}
+        {/* {posts.sort((a , b) => b.updated_at - a.updated_at).map(post => (<ParkItem key={posts.id} post={post} />))} */}
       </div>)
       }
     </>

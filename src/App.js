@@ -15,18 +15,12 @@ import SignUp from './component/SignUp';
 import reducer from './utils/reducer';
 import Dropdown from './component/Dropdown';
 import './style.css';
+import initialState from './config/initialState';
 
 
 const App = () => {
 
-  const initialState = {
-    parkPosts: [],
-    loading: true,
-    parks: []
-  }
-
   const [store, dispatch] = useReducer(reducer, initialState);
-  // const StateContext = React.createContext()
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
