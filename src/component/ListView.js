@@ -1,16 +1,13 @@
 import React from 'react';
-import { ParkItem } from './ParkItem';
+// import { ParkItem } from './ParkItem';
+import Park from './Park';
+// import ParkComment from './ParkComment';
 import { useGlobalState } from '../utils/stateContext';
 
 export const ListView = () => {
-  
-  // const {loading, posts} = props
 
   const {store} = useGlobalState();
-  // console.log('store', store);
-  // const { loading, posts } = store; // doesn't work
-  const { loading, parkPosts } = store; // works but doesn't map through
-  // const { loading, parks } = store;
+  const { loading, parks } = store; 
 
   return (
     <>
@@ -21,12 +18,9 @@ export const ListView = () => {
       (<p>Loading</p>)
       :
       (<div>
-        {/* should be alphabetically by park name */}
-        
-        {parkPosts.sort((a , b) => b.updated_at - a.updated_at).map(post => (<ParkItem key={parkPosts.id} post={post} />))}
-        {/* {parks.sort((a , b) => b.updated_at - a.updated_at).map(park => (<ParkItem key={parks.id} park={park} />))} */}
-        {/* {parks.sort().map(park => (<ParkItem key={parks.id} parks={park} />))} */}
-        {/* {posts.sort((a , b) => b.updated_at - a.updated_at).map(post => (<ParkItem key={posts.id} post={post} />))} */}
+        {/* {parks.map(park => (<Park key={parks.id} key={parkPosts.id} park={park} />))} */}
+        {parks.map(park => (<Park key={parks.id} park={park} />))}
+        {/* <ParkComment key={parkPosts.id} /> */}
       </div>)
       }
     </>

@@ -8,3 +8,12 @@ export const getParks = () => {
     }, 2000)
   })
 }
+
+export const getPark = (id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(parks.find(park => park.id == id))
+    }, 2000)
+  })
+}
+

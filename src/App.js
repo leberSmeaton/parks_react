@@ -11,6 +11,7 @@ import Footer from './component/Footer';
 import MapView from './component/MapView';
 import About from './component/About';
 import SignIn from './component/SignIn';
+import Park from './component/Park';
 import SignUp from './component/SignUp';
 import reducer from './utils/reducer';
 import Dropdown from './component/Dropdown';
@@ -124,6 +125,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<MapView />}></Route>
             <Route path="/list" element={<ListView />}></Route>
+            <Route path="/list/:id" element={<Park/>} />
+            {/* <Route path="/newcomment" element={<NewParkComment  />} /> */}
             <Route path="/about" element={<About />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>

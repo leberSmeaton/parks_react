@@ -37,6 +37,7 @@ export default function reducer(state, action) {
         parks: action.data
       }
     }
+    
     default: return state
   } 
 }
