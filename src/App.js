@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getParkPosts } from './services/parkPostServices';
 import { getParkPost } from './services/parkPostServices';
 import { GlobalStyle } from './styled-components/globalStyles';
-import { ListPreview } from './component/ListPreview';
+// import { ListPreview } from './component/ListPreview';
 import { StateContext } from './utils/stateContext';
 // import { useGlobalState } from './utils/stateContext';
 import NavBar from './component/NavBar';
@@ -24,7 +24,7 @@ import initialState from './config/initialState';
 const App = () => {
 
   const [store, dispatch] = useReducer(reducer, initialState);
-  const {id} = useParams();
+  // const {id} = useParams();
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);

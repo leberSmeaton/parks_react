@@ -2,42 +2,6 @@ import React from 'react';
 // import { useGlobalState } from '../utils/stateContext';
 
 export default function ParkMakeComment() {
-  /* USE STATE...... ???
-
-  const initialState = {
-    park_comment: "",
-    park_image: ""
-  }
-
-  const {addNewParkPost} = props
-  const [parkPostState, setParkPostState] = useState(initialState);
-
-  function handleChange(event){
-    setParkPostState({
-      ...parkPostState,
-      [event.target.name]: event.target.value
-    })
-  }
-  
-  function handleSubmit(event) {
-    event.preventDefault()
-    console.log(parkPostState); // check that it submits
-  }
-  */
-
-  /* GLOBAL STATE ?
-  const { store } = useGlobalState();
-  console.log('store', store);
-  const { post } = store;
-
-  // Adding a park post comment
-  function addParkPost(post) {
-    dispatch({
-      type: 'addParkPosts',
-      data: post
-    })
-  } 
-  */
 
   return (
     <>
