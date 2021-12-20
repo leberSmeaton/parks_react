@@ -1,41 +1,41 @@
-import React from 'react'
-// import React, {useReducer} from 'react'
-// import reducer from './utils/reducer';
-// import parks from '../data/parks';
+import React, {useEffect, useState} from 'react';
+import { useParams } from 'react-router';
+import { getParkPost } from '../services/parkPostServices';
 import { useGlobalState } from '../utils/stateContext';
 
 
 export default function Park() {
-  
   const {store} = useGlobalState();
-  // console.log('store', store);
-  const {parks} = store;
+  const { parks } = store;
+  const [park, setPark] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const {id} = useParams();
 
-  // function ParkList() {
-  //   const listItems = parks.map((park) =>
-  //     <li key={park.id}>
-  //       {park.park_name}
-  //     </li>
-  //   );
-  //   return (
-  //     <ul>{listItems}</ul>
-  //   );
-  // }
+  useEffect(() => {
+    getParkPost(park, id)
+      .then(park => setPark(park))
+      .catch(error => console.log(error))
+      .finally(() => setLoading(false)
+      )
+  }, [id, parks])
+
+  if(!park) {
+    return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your park.</p>) 
+  }
 
   return (
     <>
-      {/* <ParkList parks={parks} /> */}
+      ---
       <ul>
         <li>
-          <p>🌴</p>
-          {/* <p>icon: {parks.park_icon}</p> */}
-          <h4>All Nations Park</h4>
-          <p>name: {parks.park_name}</p>
-          <p>Separation St, Northcote VIC 3070</p>
-          {/* <p>address: {parks.address_id}</p> */}
-          <p>picnic, food nearby, nature, skatepark, playground</p>
-          {/* <p>feature: {parks.feature_id}</p> */}
+          <p>icon: {park.park_icon} || 🌴</p>
+          <h4>name: {park.park_name} || All Nations Park</h4>
+          <p>address: {park.address_id} || Separation St, Northcote VIC 3070</p>
+          <p>feature: {park.feature_id} || picnic, food nearby, nature, skatepark, playground</p>
           <p>⭐️  ⭐️  ⭐️  ⭐️ </p>
+        </li>
+        <li>
+          {/* <p>park comment: {parkPosts[0].park_comment}</p> */}
         </li>
       </ul>
     </>
