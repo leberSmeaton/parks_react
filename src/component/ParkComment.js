@@ -16,7 +16,7 @@ export default function ParkComment() {
       <div key={post.id}>
         <h4>username: {post.user_id} || park_name: {post.park_id}</h4>
         <Moment fromNow>{post.updated_at}</Moment> - <Moment format="DD/MM/YYYY">{post.updated_at}</Moment>
-        <p>{post.park_comment}</p>
+        <p>comment: {post.park_comment}</p>
         <hr />
       </div>
     );
