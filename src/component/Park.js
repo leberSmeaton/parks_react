@@ -27,19 +27,18 @@ export default function Park() {
 
   return (
     <>
-      ---
       <ul>
         <li>
-          <p>icon: {park.park_icon} || 🌴</p>
-          <h4>name: {park.park_name} || All Nations Park</h4>
+          <p></p>
+          <h4>{park.park_icon} | {park.park_name}</h4>
           <p>address: {park.address_id} || Separation St, Northcote VIC 3070</p>
           <p>feature: {park.feature_id} || picnic, food nearby, nature, skatepark, playground</p>
           <p>⭐️  ⭐️  ⭐️  ⭐️ </p>
         </li>
         <br />
         <li>
-          <p>park cheese: {park.cheese_pair}</p>
-          <p>park wine: {park.wine_pair}</p>
+          <p>cheese pair: {park.cheese_pair}</p>
+          <p>wine pair: {park.wine_pair}</p>
         </li>
         <br />
         <li>
