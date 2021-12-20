@@ -9,10 +9,10 @@ export const getParks = () => {
   })
 }
 
-export const getPark = (id) => {
+export const getPark = (parks, id) => {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      resolve(parks.find(park => park.id == id))
+      resolve(parks.find(park => park.id === parseInt(id)))
     }, 2000)
   })
 }

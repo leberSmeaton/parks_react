@@ -31,7 +31,7 @@ export default function reducer(state, action) {
         loading: action.data
       }
     }
-    case 'setParks':{
+    case 'setPark':{
       return {
         ...state,
         parks: action.data

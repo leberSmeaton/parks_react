@@ -1,9 +1,10 @@
 import React, { useEffect, useState, useReducer } from 'react';
+import {useParams} from 'react-router';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { getParkPosts } from './services/parkPostServices';
-import { getParks } from './services/parkServices';
+import { getParkPost } from './services/parkPostServices';
 import { GlobalStyle } from './styled-components/globalStyles';
-import { ListView } from './component/ListView';
+import { ListPreview } from './component/ListPreview';
 import { StateContext } from './utils/stateContext';
 // import { useGlobalState } from './utils/stateContext';
 import NavBar from './component/NavBar';
@@ -15,6 +16,7 @@ import Park from './component/Park';
 import SignUp from './component/SignUp';
 import reducer from './utils/reducer';
 import Dropdown from './component/Dropdown';
+import ParkPosts from './component/ParkPosts';
 import './style.css';
 import initialState from './config/initialState';
 
@@ -22,6 +24,7 @@ import initialState from './config/initialState';
 const App = () => {
 
   const [store, dispatch] = useReducer(reducer, initialState);
+  const {id} = useParams();
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
@@ -50,11 +53,11 @@ const App = () => {
   // Park Post data from parkServices.js
   useEffect(() => {
     getParkPosts()
-      .then(posts => {
-        console.log(posts)
+      .then(parks => { 
+        console.log(parks)
         dispatch({
           type: 'setParkPosts',
-          data: posts
+          data: parks
         })
       })
       .catch(err => console.log(err))
@@ -68,11 +71,10 @@ const App = () => {
 
   // Parks data from parkServices.js
   useEffect(() => {
-    getParks()
+    getParkPost()
       .then(parks => {
-        console.log(parks)
         dispatch({
-          type: 'setParks',
+          type: 'setParkPost',
           data: parks
         })
       })
@@ -85,36 +87,6 @@ const App = () => {
       )
   }, [])
 
-  /* When the new park post is created, passing it back up to the top level in app to update the state.
-  But, how is this done using context?
-  */
-  // function addNewParkPost(parkPostObject) {
-  //   createNewParkPost(parkPostObject)
-  //     .then(newParkPost => setParkPosts([...parkPosts, newParkPost]))
-  //     .catch(error => console.log(error))
-  //     .finally(() => setLoading(false));
-  // }
-  /* MAYBE LIKE THIS ???
-
-  useEffect(() => {
-    createNewParkPost(parkPostObject)
-      .then(parks => {
-        console.log(parks)
-        dispatch({
-          type: 'setParkPosts',
-          data: [...parkPosts, newParkPost]
-        })
-      })
-      .catch(err => console.log(err))
-      .finally(() => 
-        dispatch({
-          type: 'setLoading',
-          data: false
-        })  
-      )
-  }, [])
-  */
-
   return (
     <>
       <StateContext.Provider value={{ store: store, dispatch }}>
@@ -124,8 +96,8 @@ const App = () => {
           <Dropdown isOpen={isOpen} toggle={toggle} />
           <Routes>
             <Route path="/" element={<MapView />}></Route>
-            <Route path="/list" element={<ListView />}></Route>
-            <Route path="/list/:id" element={<Park/>} />
+            <Route path="/parks" element={<ParkPosts />}></Route>
+            <Route path="/parks/:id" element={<Park/>} />
             {/* <Route path="/newcomment" element={<NewParkComment  />} /> */}
             <Route path="/about" element={<About />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>

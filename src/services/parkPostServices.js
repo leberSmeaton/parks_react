@@ -1,23 +1,25 @@
 import posts from '../data/posts';
 
-// getParkPosts <-
-export const getParkPosts = () => {
-  // faking a fetch request
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(posts)
-    }, 2000)
-  })
-}
+import parks from '../data/parks';
 
-// getParkPost
-export const getParkPost = (id) => {
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(posts.find(post => post.id === parseInt(id)))
-    }, 500)
-  })
-}
+// getParkPosts <-
+// export const getParkPosts = () => {
+//   // faking a fetch request
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(posts)
+//     }, 2000)
+//   })
+// }
+
+// // getParkPost
+// export const getParkPost = (id) => {
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(posts.find(post => post.id === parseInt(id)))
+//     }, 500)
+//   })
+// }
 
 // we don't need this for id and date when database is connected
 const getNextId = () => {
@@ -38,3 +40,23 @@ export const createNewParkPost = (parkPostObject) => {
     }, 500)
   })
 }
+
+
+
+export const getParkPosts = () => {
+  // faking a fetch request
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(parks)
+    }, 2000)
+  })
+}
+
+export const getParkPost = (parks, id) => {
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(parks.find(park => park.id === parseInt(id)))
+    }, 2000)
+  })
+}
+
