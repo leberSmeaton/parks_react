@@ -1,7 +1,9 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
+import { Link } from 'react-router-dom';
 import { getParkPost } from '../services/parkPostServices';
 import { useGlobalState } from '../utils/stateContext';
+import ParkMakeComment from './ParkMakeComment';
 
 
 export default function Park() {
@@ -25,17 +27,29 @@ export default function Park() {
 
   return (
     <>
-      ---
       <ul>
         <li>
-          <p>icon: {park.park_icon} || 🌴</p>
-          <h4>name: {park.park_name} || All Nations Park</h4>
+          <p></p>
+          <h4>{park.park_icon} | {park.park_name}</h4>
           <p>address: {park.address_id} || Separation St, Northcote VIC 3070</p>
           <p>feature: {park.feature_id} || picnic, food nearby, nature, skatepark, playground</p>
           <p>⭐️  ⭐️  ⭐️  ⭐️ </p>
         </li>
+        <br />
         <li>
-          {/* <p>park comment: {parkPosts[0].park_comment}</p> */}
+          <p>cheese pair: {park.cheese_pair}</p>
+          <p>wine pair: {park.wine_pair}</p>
+        </li>
+        <br />
+        <li>
+          <h4><strong>List Existing Comments Here</strong></h4>
+        </li>
+        <br />
+        <li>
+          <ParkMakeComment />
+        </li>
+        <li>
+          <strong><Link to="/Parks">Back to Park List</Link></strong>
         </li>
       </ul>
     </>
