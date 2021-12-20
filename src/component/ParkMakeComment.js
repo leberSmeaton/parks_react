@@ -1,29 +1,70 @@
-import React from 'react'
+import React from 'react';
+// import { useGlobalState } from '../utils/stateContext';
 
 export default function ParkMakeComment() {
-  /* Adding a park post comment
+  /* USE STATE...... ???
+
+  const initialState = {
+    park_comment: "",
+    park_image: ""
+  }
+
+  const {addNewParkPost} = props
+  const [parkPostState, setParkPostState] = useState(initialState);
+
+  function handleChange(event){
+    setParkPostState({
+      ...parkPostState,
+      [event.target.name]: event.target.value
+    })
+  }
+  
+  function handleSubmit(event) {
+    event.preventDefault()
+    console.log(parkPostState); // check that it submits
+  }
+  */
+
+  /* GLOBAL STATE ?
+  const { store } = useGlobalState();
+  console.log('store', store);
+  const { post } = store;
+
+  // Adding a park post comment
   function addParkPost(post) {
     dispatch({
       type: 'addParkPosts',
       data: post
     })
-  } */
-  
+  } 
+  */
+
   return (
     <>
-      {/* <form onSubmit={handleSubmit}> */}
+      {/* <form id="addParkPost" onSubmit={handleSubmit}> */}
       <form>
-        <label>Comment:
-          <textarea>Write Comment Here...</textarea>
-        </label>
+          <label>Comment:
+            <textarea
+              id="park_comment"
+              from="addParkPost"
+              type="text"
+              name="park_comment"
+              placeholder="Enter park comment"
+              // value={parkPostState.park_comment}
+              // onChange={handleChange}
+            ></textarea>
+          </label>
         <br />
-        <label>Upload images:
-          <input type="file"></input>
-        </label>
+          <label>Upload images:
+            <input 
+              type="file" 
+              name="park_image" 
+              // value={parkPostState.park_image}
+              // onChange={handleChange}
+            />
+          </label>
         <br />
-        <button type="submit" className="primary">
-          Sign In
-        </button>
+          <button type="submit" value="Add Comment" className="primary" />
       </form>
     </>
   )

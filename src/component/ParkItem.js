@@ -3,8 +3,8 @@ import CheeseWine from './CheeseWine';
 import Park from './Park';
 import ParkComment from './ParkComment';
 
-export const ParkItem = (props) => {
-  const {post} = props
+export const ParkItem = () => {
+
   return (
     <>
       <div>
@@ -12,7 +12,8 @@ export const ParkItem = (props) => {
           <li>
             <Park />
             <CheeseWine />
-            <ParkComment post={post} />
+            {/* {if <ParkComment /> id exists? ? <parkComment /> : nil} */}
+            <ParkComment />
           </li>
         </ul>
       </div> 
