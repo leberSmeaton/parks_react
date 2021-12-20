@@ -6,18 +6,18 @@ import { useGlobalState } from '../utils/stateContext';
 
 export default function Park() {
   const {store} = useGlobalState();
-  const { parks } = store;
+  const { parkPosts } = store;
   const [park, setPark] = useState(null);
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
 
   useEffect(() => {
-    getParkPost(park, id)
+    getParkPost(parkPosts, id)
       .then(park => setPark(park))
       .catch(error => console.log(error))
       .finally(() => setLoading(false)
       )
-  }, [id, parks])
+  }, [parkPosts, id])
 
   if(!park) {
     return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your park.</p>) 

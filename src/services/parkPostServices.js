@@ -22,26 +22,6 @@ import parks from '../data/parks';
 // }
 
 // we don't need this for id and date when database is connected
-const getNextId = () => {
-  const maxId = Math.max(...posts.map(post => post.id));
-  return maxId + 1;
-}
-
-export const createNewParkPost = (parkPostObject) => {
-  const newParkPost = {
-    ...parkPostObject,
-    updated_at: Date.now(),
-    id: getNextId()
-  }
-
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(newParkPost);
-    }, 500)
-  })
-}
-
-
 
 export const getParkPosts = () => {
   // faking a fetch request
@@ -60,3 +40,21 @@ export const getParkPost = (parks, id) => {
   })
 }
 
+// const getNextId = () => {
+//   const maxId = Math.max(...posts.map(post => post.id));
+//   return maxId + 1;
+// }
+
+// export const createNewParkPost = (parkPostObject) => {
+//   const newParkPost = {
+//     ...parkPostObject,
+//     updated_at: Date.now(),
+//     id: getNextId()
+//   }
+
+//   return new Promise((resolve, reject) => {
+//     setTimeout(() => {
+//       resolve(newParkPost);
+//     }, 500)
+//   })
+// }
