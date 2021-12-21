@@ -1,21 +1,34 @@
-import React from 'react'
+import React from 'react';
+// import { useGlobalState } from '../utils/stateContext';
 
 export default function ParkMakeComment() {
+
   return (
     <>
-      {/* <form onSubmit={handleSubmit}> */}
+      {/* <form id="addParkPost" onSubmit={handleSubmit}> */}
       <form>
-        <label>Comment:
-          <textarea>Write Comment Here...</textarea>
-        </label>
+          <label>Add Park Comment:
+            <textarea
+              id="park_comment"
+              from="addParkPost"
+              type="text"
+              name="park_comment"
+              placeholder="Enter park comment"
+              // value={parkPostState.park_comment}
+              // onChange={handleChange}
+            ></textarea>
+          </label>
         <br />
-        <label>Upload images:
-          <input type="file"></input>
-        </label>
+          <label>Upload images:
+            <input 
+              type="file" 
+              name="park_image" 
+              // value={parkPostState.park_image}
+              // onChange={handleChange}
+            />
+          </label>
         <br />
-        <button type="submit" className="primary">
-          Sign In
-        </button>
+          <button type="submit" value="Add Comment" className="primary" />
       </form>
     </>
   )

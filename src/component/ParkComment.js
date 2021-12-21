@@ -1,19 +1,42 @@
-import React from 'react'
+import React, {useEffect} from 'react';
+// import { useParams } from 'react-router';
 import Moment from 'react-moment';
-import ParkMakeComment from './ParkMakeComment';
+import {useGlobalState} from '../utils/stateContext'
+import { getPosts } from '../services/parkPostServices';
 
-export default function ParkComment(props) {
-  const { post } = props;
+export default function ParkComment() {
+  const { store, dispatch } = useGlobalState();
+  const { posts, loading } = store;
+  // const [post, setPost] = useState([]);
+  // const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    getPosts()
+      .then(posts => {
+        console.log(posts)
+        dispatch({
+          type: 'setPost',
+          data: posts
+        })
+      })
+      .catch(err => console.log(err))
+      .finally(() => 
+        dispatch({
+          type: 'setLoading',
+          data: false
+        })  
+      )
+  })
+
+  if(!posts) {
+    return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your posts.</p>) 
+  }
+
   return (
     <>
-      <ul>
-        <li>
-          <h4>{post.user_id} - username || {post.park_id} - park_name</h4>
-          <Moment fromNow>{post.updated_at}</Moment> - <Moment format="DD/MM/YYYY">{post.updated_at}</Moment>
-          <h4>{post.comment}</h4>
-        </li>
-      </ul>
-      <ParkMakeComment />
+      <h4>user_id: {posts.user_id} || park_id: {posts.park_id}</h4>
+      <Moment fromNow>{posts.updated_at}</Moment> - <Moment format="DD/MM/YYYY">{posts.updated_at}</Moment>
+      <p>park_comment: {posts.park_comment}</p>
     </>
   )
 }
