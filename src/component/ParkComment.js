@@ -26,7 +26,7 @@ export default function ParkComment() {
           data: false
         })  
       )
-  }, [])
+  })
 
   if(!posts) {
     return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your posts.</p>) 
