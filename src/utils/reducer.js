@@ -37,6 +37,18 @@ export default function reducer(state, action) {
         parks: action.data
       }
     }
+    case 'setPost':{
+      return {
+        ...state,
+        posts: action.data
+      }
+    }
+    case 'setPosts':{
+      return {
+        ...state,
+        posts: action.data
+      }
+    }
     
     default: return state
   } 

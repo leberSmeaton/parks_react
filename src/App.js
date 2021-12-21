@@ -1,12 +1,8 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import {useParams} from 'react-router';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { getParkPosts } from './services/parkPostServices';
-import { getParkPost } from './services/parkPostServices';
+import { getParkPosts, getParkPost, getPosts, getPost } from './services/parkPostServices';
 import { GlobalStyle } from './styled-components/globalStyles';
-// import { ListPreview } from './component/ListPreview';
 import { StateContext } from './utils/stateContext';
-// import { useGlobalState } from './utils/stateContext';
 import NavBar from './component/NavBar';
 import Footer from './component/Footer';
 import MapView from './component/MapView';
@@ -24,7 +20,6 @@ import initialState from './config/initialState';
 const App = () => {
 
   const [store, dispatch] = useReducer(reducer, initialState);
-  // const {id} = useParams();
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +45,7 @@ const App = () => {
   // END hamburger menu toggle
 
 
-  // Park Post data from parkServices.js
+  // Parks data from parkServices.js
   useEffect(() => {
     getParkPosts()
       .then(parks => { 
@@ -69,13 +64,48 @@ const App = () => {
       )
   }, [])
 
-  // Parks data from parkServices.js
+  // Park data from parkServices.js
   useEffect(() => {
     getParkPost()
       .then(parks => {
         dispatch({
           type: 'setParkPost',
           data: parks
+        })
+      })
+      .catch(err => console.log(err))
+      .finally(() => 
+        dispatch({
+          type: 'setLoading',
+          data: false
+        })  
+      )
+  }, [])
+
+  useEffect(() => {
+    getPosts()
+      .then(posts => {
+        console.log(posts)
+        dispatch({
+          type: 'setPosts',
+          data: posts
+        })
+      })
+      .catch(err => console.log(err))
+      .finally(() => 
+        dispatch({
+          type: 'setLoading',
+          data: false
+        })  
+      )
+  }, [])
+
+  useEffect(() => {
+    getPost()
+      .then(posts => {
+        dispatch({
+          type: 'setPost',
+          data: posts
         })
       })
       .catch(err => console.log(err))
@@ -98,7 +128,8 @@ const App = () => {
             <Route path="/" element={<MapView />}></Route>
             <Route path="/parks" element={<ParkPosts />}></Route>
             <Route path="/parks/:id" element={<Park/>} />
-            {/* <Route path="/newcomment" element={<NewParkComment  />} /> */}
+              {/* <Route path="/newcomment" element={<NewParkComment  />} /> */}
+            {/* </Route> */}
             <Route path="/about" element={<About />}></Route>
             <Route path="/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>

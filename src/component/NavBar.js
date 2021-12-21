@@ -12,7 +12,7 @@ export default function NavBar({toggle}) {
       </div>
       <div className="pr-8 md:block hidden">
         <NavLink className="p-4" to="/">Map</NavLink>
-        <NavLink className="p-4" to="/list">List</NavLink>
+        <NavLink className="p-4" to="/parks">List</NavLink>
         <NavLink className="p-4" to="/about">About</NavLink>
         <NavLink className="p-4" to="/signin">Sign In</NavLink>
       </div>
