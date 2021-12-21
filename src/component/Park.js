@@ -3,6 +3,7 @@ import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { getParkPost } from '../services/parkPostServices';
 import { useGlobalState } from '../utils/stateContext';
+import ParkComment from './ParkComment';
 import ParkMakeComment from './ParkMakeComment';
 
 
@@ -43,6 +44,10 @@ export default function Park() {
         <br />
         <li>
           <h4><strong>List Existing Comments Here</strong></h4>
+        </li>
+        <br />
+        <li>
+          <ParkComment />
         </li>
         <br />
         <li>

@@ -1,7 +1,8 @@
 const initialState = {
   parkPosts: [],
   loading: true,
-  parks: []
+  parks: [],
+  posts: []
 }
 
 export default initialState;

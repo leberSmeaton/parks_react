@@ -7,7 +7,7 @@ export default function ParkMakeComment() {
     <>
       {/* <form id="addParkPost" onSubmit={handleSubmit}> */}
       <form>
-          <label>Comment:
+          <label>Add Park Comment:
             <textarea
               id="park_comment"
               from="addParkPost"
