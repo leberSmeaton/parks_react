@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect} from 'react';
 // import { useParams } from 'react-router';
 import Moment from 'react-moment';
 import {useGlobalState} from '../utils/stateContext'
@@ -6,9 +6,9 @@ import { getPosts } from '../services/parkPostServices';
 
 export default function ParkComment() {
   const { store, dispatch } = useGlobalState();
-  const { posts } = store;
+  const { posts, loading } = store;
   // const [post, setPost] = useState([]);
-  const [loading, setLoading] = useState(true);
+  // const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getPosts()
@@ -26,7 +26,7 @@ export default function ParkComment() {
           data: false
         })  
       )
-  }, [posts])
+  }, [])
 
   if(!posts) {
     return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your posts.</p>) 
