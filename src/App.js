@@ -19,9 +19,7 @@ import initialState from './config/initialState';
 const App = () => {
 
   const [store, dispatch] = useReducer(reducer, initialState);
-  const [loading, setLoading] = useState(true);
   const { posts, parkPosts } = store;
-  const [park, setPark] = useState(null);
   const {id} = useParams();
 
   // hamburger menu toggle
@@ -123,9 +121,18 @@ const App = () => {
   // getParkPosts by params id
   useEffect(() => {
     getParkPost(parkPosts, id)
-      .then(park => setPark(park))
+      .then(park => 
+        dispatch({
+          type: 'setPark',
+          data: park
+        })
+      )
       .catch(error => console.log(error))
-      .finally(() => setLoading(false)
+      .finally(() => 
+        dispatch({
+          type: 'setLoading',
+          data: false
+        })
       )
   }, [parkPosts, id])
 
