@@ -49,7 +49,24 @@ export default function reducer(state, action) {
         posts: action.data
       }
     }
-    
+    case 'setFeatures':{
+      return {
+        ...state,
+        features: action.data
+      }
+    }
+    case "setSignedInUser" : {
+      return {
+          ...state,
+          signedInUser: action.data
+      }
+    }
+    case "removeSignedInUser" : {
+      return {
+          ...state,
+          signedInUser: null
+      }
+    }
     default: return state
   } 
 }

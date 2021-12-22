@@ -20,7 +20,7 @@ export default function Park() {
       .catch(error => console.log(error))
       .finally(() => setLoading(false)
       )
-  }, [parkPosts, id])
+  }, [id, parkPosts])
 
   if(!park) {
     return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your park.</p>) 
@@ -42,19 +42,20 @@ export default function Park() {
           <p>wine pair: {park.wine_pair}</p>
         </li>
         <br />
+        <hr />
         <li>
           <h4><strong>List Existing Comments Here</strong></h4>
         </li>
-        <br />
         <li>
           <ParkComment />
         </li>
-        <br />
+        <hr />
         <li>
           <ParkMakeComment />
         </li>
+        <br />
         <li>
-          <strong><Link to="/Parks">Back to Park List</Link></strong>
+          <strong><Link to="/parks">Back to Park List</Link></strong>
         </li>
       </ul>
     </>

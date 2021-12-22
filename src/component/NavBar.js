@@ -1,7 +1,10 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { useGlobalState } from '../utils/stateContext';
 
 export default function NavBar({toggle}) {
+  const {store} = useGlobalState();
+  const {loggedInUser} = store;
   return (
     <nav className='nav-bar' role='navigation'>
       <NavLink className="pl-8" to="/">Picnic Victoria</NavLink>
@@ -15,6 +18,7 @@ export default function NavBar({toggle}) {
         <NavLink className="p-4" to="/parks">List</NavLink>
         <NavLink className="p-4" to="/about">About</NavLink>
         <NavLink className="p-4" to="/signin">Sign In</NavLink>
+        <span>| Hello {loggedInUser || "guest"}</span>
       </div>
       
     </nav>

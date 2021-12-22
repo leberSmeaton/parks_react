@@ -40,24 +40,20 @@ export const getPost = (posts, id) => {
   })
 }
 
+const getNextId = () => {
+  const maxId = Math.max(...posts.map(post => post.id));
+  return maxId + 1;
+}
 
-
-
-// const getNextId = () => {
-//   const maxId = Math.max(...posts.map(post => post.id));
-//   return maxId + 1;
-// }
-
-// export const createNewParkPost = (parkPostObject) => {
-//   const newParkPost = {
-//     ...parkPostObject,
-//     updated_at: Date.now(),
-//     id: getNextId()
-//   }
-
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve(newParkPost);
-//     }, 500)
-//   })
-// }
+export const createNewParkPost = (parkPostObject) => {
+  const newParkPost = {
+    ...parkPostObject,
+    updated_at: Date.now(),
+    id: getNextId()
+  }
+  return new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(newParkPost);
+    }, 500)
+  })
+}
