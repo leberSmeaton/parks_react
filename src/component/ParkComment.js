@@ -1,32 +1,34 @@
-import React, {useEffect} from 'react';
+import React from 'react';
+// import React, {useEffect} from 'react';
 // import { useParams } from 'react-router';
 import Moment from 'react-moment';
 import {useGlobalState} from '../utils/stateContext'
-import { getPosts } from '../services/parkPostServices';
+// import { getPosts } from '../services/parkPostServices';
 
 export default function ParkComment() {
-  const { store, dispatch } = useGlobalState();
+  const { store } = useGlobalState();
+  // const { store, dispatch } = useGlobalState();
   const { posts, loading } = store;
   // const [post, setPost] = useState([]);
   // const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    getPosts()
-      .then(posts => {
-        console.log(posts)
-        dispatch({
-          type: 'setPost',
-          data: posts
-        })
-      })
-      .catch(err => console.log(err))
-      .finally(() => 
-        dispatch({
-          type: 'setLoading',
-          data: false
-        })  
-      )
-  })
+  // useEffect(() => {
+  //   getPosts()
+  //     .then(posts => {
+  //       console.log(posts)
+  //       dispatch({
+  //         type: 'setPost',
+  //         data: posts
+  //       })
+  //     })
+  //     .catch(err => console.log(err))
+  //     .finally(() => 
+  //       dispatch({
+  //         type: 'setLoading',
+  //         data: false
+  //       })  
+  //     )
+  // }, [posts])
 
   if(!posts) {
     return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your posts.</p>) 

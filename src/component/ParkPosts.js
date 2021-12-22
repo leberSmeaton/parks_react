@@ -17,6 +17,7 @@ export default function ParkPosts() {
   return (
     <>
       <h2>All the parks</h2>
+      {/* This button isn't used atm */}
       <button onClick={sortAZ}>Sort A-Z</button>
       {
       loading

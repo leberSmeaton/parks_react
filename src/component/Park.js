@@ -42,17 +42,18 @@ export default function Park() {
           <p>wine pair: {park.wine_pair}</p>
         </li>
         <br />
+        <hr />
         <li>
           <h4><strong>List Existing Comments Here</strong></h4>
         </li>
-        <br />
         <li>
           <ParkComment />
         </li>
-        <br />
+        <hr />
         <li>
           <ParkMakeComment />
         </li>
+        <br />
         <li>
           <strong><Link to="/Parks">Back to Park List</Link></strong>
         </li>

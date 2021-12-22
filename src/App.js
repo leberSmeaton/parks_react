@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import { getParkPosts, getParkPost, getPosts, getPost } from './services/parkPostServices';
 import { GlobalStyle } from './styled-components/globalStyles';
 import { StateContext } from './utils/stateContext';
@@ -16,10 +16,13 @@ import ParkPosts from './component/ParkPosts';
 import './style.css';
 import initialState from './config/initialState';
 
-
 const App = () => {
 
   const [store, dispatch] = useReducer(reducer, initialState);
+  const [loading, setLoading] = useState(true);
+  const { posts, parkPosts } = store;
+  const [park, setPark] = useState(null);
+  const {id} = useParams();
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
@@ -116,6 +119,39 @@ const App = () => {
         })  
       )
   }, [])
+
+  // getParkPosts by params id
+  useEffect(() => {
+    getParkPost(parkPosts, id)
+      .then(park => setPark(park))
+      .catch(error => console.log(error))
+      .finally(() => setLoading(false)
+      )
+  }, [parkPosts, id])
+
+  // get parkComment 
+  useEffect(() => {
+    getPosts()
+      .then(posts => {
+        console.log(posts)
+        dispatch({
+          type: 'setPost',
+          data: posts
+        })
+      })
+      .catch(err => console.log(err))
+      .finally(() => 
+        dispatch({
+          type: 'setLoading',
+          data: false
+        })  
+      )
+  }, [posts])
+
+  // useEffect(() => {
+  //   retrieveUserFromJWT()
+  //     .then(response => dispatch({type:"setLoggedInUser", data: response.username}))
+  // }, [token])
 
   return (
     <>
