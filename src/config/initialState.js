@@ -2,7 +2,8 @@ const initialState = {
   parkPosts: [],
   loading: true,
   parks: [],
-  posts: []
+  posts: [],
+  features: []
 }
 
 export default initialState;

@@ -1,21 +1,26 @@
 import React, {useState} from 'react';
-// import { useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useGlobalState } from '../utils/stateContext';
 import { createNewParkPost } from '../services/parkPostServices';
 
 export default function ParkMakeComment() {
   
   const {store, dispatch} = useGlobalState();
+  // const {posts, features} = store;
   const {posts} = store;
+  const [loading, setLoading] = useState(true);
+  const navigate = useNavigate();
 
   const initialState = {
     park_comment: "",
-    park_image: ""
+    park_image: "",
+    // feature: []
   }
   
   const [postFormState, setPostFormState] = useState(initialState);
 
   function addNewParkPost(parkPostObject) {
+    setLoading(true)
     createNewParkPost(parkPostObject)
       .then(newParkPost => {
         console.log(newParkPost);
@@ -23,11 +28,14 @@ export default function ParkMakeComment() {
           type: "setParkPosts",
           data: [...posts, newParkPost]
         })
+        setLoading(false)
+        navigate("/")
       })
       .catch(error => console.log(error))
   }
 
   function handleChange(event) {
+    event.preventDefault();
     setPostFormState({
       ...postFormState,
       [event.target.name]: event.target.value
@@ -54,6 +62,17 @@ export default function ParkMakeComment() {
             ></textarea>
           </label>
         <br />
+          {/* <label>Select what feature this comment applies to:
+            <select name="feature_id" onChange={handleChange}>
+              {features
+                .map(feature => (
+                  <option key={feature.id} value={feature.name}>
+                    {feature.name}
+                  </option>
+                ))}
+            </select>
+          </label>
+        <br /> */}
           <label>Upload images: <br />
             <input 
               id="park_image"
@@ -66,7 +85,7 @@ export default function ParkMakeComment() {
             />
           </label>
         <br />
-          <button type="submit" className="primary">Add Park Comment</button>
+          <button disabled={loading} type="submit" className="primary">Add Park Comment</button>
       </form>
     </>
   )

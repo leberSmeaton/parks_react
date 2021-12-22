@@ -49,6 +49,12 @@ export default function reducer(state, action) {
         posts: action.data
       }
     }
+    case 'setFeatures':{
+      return {
+        ...state,
+        features: action.data
+      }
+    }
     
     default: return state
   } 

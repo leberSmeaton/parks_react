@@ -1,5 +1,7 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
+import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
+import { getParkPost } from '../services/parkPostServices';
 import { useGlobalState } from '../utils/stateContext';
 import ParkComment from './ParkComment';
 import ParkMakeComment from './ParkMakeComment';
@@ -7,7 +9,18 @@ import ParkMakeComment from './ParkMakeComment';
 
 export default function Park() {
   const {store} = useGlobalState();
-  const { park, loading } = store;
+  const { parkPosts } = store;
+  const [park, setPark] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const {id} = useParams();
+
+  useEffect(() => {
+    getParkPost(parkPosts, id)
+      .then(park => setPark(park))
+      .catch(error => console.log(error))
+      .finally(() => setLoading(false)
+      )
+  }, [id, parkPosts])
 
   if(!park) {
     return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your park.</p>) 
@@ -42,7 +55,7 @@ export default function Park() {
         </li>
         <br />
         <li>
-          <strong><Link to="/Parks">Back to Park List</Link></strong>
+          <strong><Link to="/parks">Back to Park List</Link></strong>
         </li>
       </ul>
     </>
