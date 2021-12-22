@@ -1,11 +1,14 @@
 import React, {useState} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import { signInUser } from '../services/userServices';
 
 export default function SignIn(props) {
   const initialValues = {
     username: "",
     password: ""
   }
+
+  const navigate = useNavigate();
 
   const [formUserValues, setUserFormValues] = useState(initialValues)
 
@@ -18,6 +21,15 @@ export default function SignIn(props) {
 
   function handleSubmit(event) {
     event.preventDefault()
+    signInUser(formUserValues)
+      .then(username => {
+        dispatchEvent({
+          type: "setSignedInUser",
+          data: username
+        })
+        navigate("/")
+      })
+      .catch(error => console.log(error))
   }
 
   return (

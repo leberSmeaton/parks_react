@@ -3,7 +3,8 @@ const initialState = {
   loading: true,
   parks: [],
   posts: [],
-  features: []
+  features: [],
+  signedInUser: null
 }
 
 export default initialState;
