@@ -14,7 +14,7 @@ const containerStyle = {
   height: '90vh'
 };
 
-const center = {
+export const center = {
   lat: -37.840935,
   lng: 144.946457
 };
@@ -35,8 +35,6 @@ export default function MapView() {
   })
 
   const [map, setMap] = React.useState(null)
-
-
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
