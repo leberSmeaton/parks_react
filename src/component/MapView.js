@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState } from 'react' 
+import {Link} from 'react-router-dom';
 import {
   GoogleMap,
   useJsApiLoader,
-  Marker
+  Marker,
+  InfoWindow
 } from "@react-google-maps/api";
 import mapStyles from '../mapStyles';
 import parks from '../data/parks';
@@ -13,8 +15,8 @@ const containerStyle = {
 };
 
 const center = {
-  lat: -37.840,
-  lng: 144.946
+  lat: -37.840935,
+  lng: 144.946457
 };
 
 const options = {
@@ -24,6 +26,8 @@ const options = {
 }
 
 export default function MapView() {
+  const [selectedPark, setSelectedPark] = useState(null);
+
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     // googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
@@ -61,10 +65,29 @@ export default function MapView() {
             lat: park.latitude, 
             lng: park.longitude
           }}
+        onClick={() => {
+          setSelectedPark(park);
+        }}
         />
       ))}
         
-      
+      {selectedPark && (
+        <InfoWindow
+          position={{
+            lat: selectedPark.latitude, 
+            lng: selectedPark.longitude
+          }}
+          onCloseClick={() => {
+            setSelectedPark(null);
+          }}
+        >
+          <div>
+            <Link to={`/parks/${selectedPark.id}`}>{selectedPark.park_name}</Link><br/>
+            {selectedPark.address_id}: 123 Albert Rd, St Kilda<br/>
+            {selectedPark.feature_id}: sports, playground, toilet
+          </div>
+        </InfoWindow>
+      )}
     </GoogleMap>
   ) 
     : ( 
