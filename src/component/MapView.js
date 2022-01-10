@@ -1,9 +1,11 @@
 import React from 'react'
 import {
   GoogleMap,
-  useJsApiLoader
+  useJsApiLoader,
+  Marker
 } from "@react-google-maps/api";
 import mapStyles from '../mapStyles';
+import parks from '../data/parks';
 
 const containerStyle = {
   width: '100vw',
@@ -16,7 +18,9 @@ const center = {
 };
 
 const options = {
-  styles: mapStyles
+  styles: mapStyles,
+  disableDefaultUI: true,
+  zoomControl: true
 }
 
 export default function MapView() {
@@ -27,6 +31,8 @@ export default function MapView() {
   })
 
   const [map, setMap] = React.useState(null)
+
+
 
   const onLoad = React.useCallback(function callback(map) {
     const bounds = new window.google.maps.LatLngBounds();
@@ -48,8 +54,17 @@ export default function MapView() {
       onUnmount={onUnmount}
     >
       { /* Child components, such as markers, info windows, etc. */ }
-      <>
-      </>
+      {parks.map((park) => (
+        <Marker 
+          key={park.id}
+          position={{
+            lat: park.latitude, 
+            lng: park.longitude
+          }}
+        />
+      ))}
+        
+      
     </GoogleMap>
   ) 
     : ( 
