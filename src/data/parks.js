@@ -10,8 +10,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "Blue Cheese",
     wine_pair: "Merlot",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.7830,
+    longitude: 144.9437
   },
   {
     id: 2,
@@ -23,8 +23,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "Mozarella",
     wine_pair: "Cab Sav",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.8709,
+    longitude: 144.9840
   },
   {
     id: 3,
@@ -36,8 +36,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "Babybel",
     wine_pair: "Non Alcoholic Wine",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.707142,
+    longitude: 145.043921
   },
   {
     id: 4	,
@@ -49,8 +49,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "Brie",
     wine_pair: "Fruity Lexia",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.7682,
+    longitude: 145.0040
   },
   {
     id: 5	,
@@ -62,8 +62,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "Hard Cow Cheese",
     wine_pair: "Orange Wine",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.805431,
+    longitude: 144.971412
   },  
   {
     id: 6,
@@ -75,8 +75,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "Parmasan Regiano",
     wine_pair: "Sparkling",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.830369,
+    longitude: 144.979606
   },
   {
     id: 7,
@@ -88,8 +88,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "Smoked Cheese",
     wine_pair: "Pinot Noir",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.8443,
+    longitude: 144.9688
   },
   {
     id: 8,
@@ -101,8 +101,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "String Cheese",
     wine_pair: "Passion Pop",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.842969,
+    longitude: 144.945742
   },
   {
     id: 9	,
@@ -114,8 +114,8 @@ const parks = [
     park_icon: "🌴",
     cheese_pair: "Goats Cheese",
     wine_pair: "Chardonay",
-    latitude: -37.830203,
-    longitude: 144.974998
+    latitude: -37.861332,
+    longitude: 144.971863
   }
 ]
 
