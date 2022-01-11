@@ -7,6 +7,7 @@ export const ListPreview = (props) => {
   const {park} = props;
   // const {store} = useGlobalState();
   // const { loading, parks } = store; 
+  console.log(park)
 
   return (
     <>

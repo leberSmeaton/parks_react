@@ -9,18 +9,20 @@ import ParkMakeComment from './ParkMakeComment';
 
 export default function Park() {
   const {store} = useGlobalState();
-  const { parkPosts } = store;
+  // const { parkPosts } = store;
   const [park, setPark] = useState(null);
   const [loading, setLoading] = useState(true);
   const {id} = useParams();
 
   useEffect(() => {
-    getParkPost(parkPosts, id)
+    // getParkPost(parkPosts, id)
+    getParkPost(id)
       .then(park => setPark(park))
       .catch(error => console.log(error))
       .finally(() => setLoading(false)
       )
-  }, [id, parkPosts])
+  }, [id])
+  // }, [id, parkPosts])
 
   if(!park) {
     return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your park.</p>) 
