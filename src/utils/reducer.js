@@ -68,12 +68,15 @@ export default function reducer(state, action) {
       }
     }
     case "setJWT" : {
+      // when I set the jwt, I also want to call on the session storage
+      sessionStorage.setItem('jwt', action.data);
       return {
           ...state,
           jwt: action.data
       }
     }
     case "removeJWT" : {
+      sessionStorage.removeItem('jwt', action.data);
       return {
           ...state,
           jwt: action.data
