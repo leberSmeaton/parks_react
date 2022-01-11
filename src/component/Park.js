@@ -2,13 +2,13 @@ import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
 import { getParkPost } from '../services/parkPostServices';
-import { useGlobalState } from '../utils/stateContext';
+// import { useGlobalState } from '../utils/stateContext';
 import ParkComment from './ParkComment';
 import ParkMakeComment from './ParkMakeComment';
 
 
 export default function Park() {
-  const {store} = useGlobalState();
+  // const {store} = useGlobalState();
   // const { parkPosts } = store;
   const [park, setPark] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -18,7 +18,9 @@ export default function Park() {
     // getParkPost(parkPosts, id)
     getParkPost(id)
       .then(park => setPark(park))
-      .catch(error => console.log(error))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => setLoading(false)
       )
   }, [id])

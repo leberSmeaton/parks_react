@@ -56,7 +56,9 @@ const App = () => {
           data: parks
         })
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => 
         dispatch({
           type: 'setLoading',
@@ -74,7 +76,9 @@ const App = () => {
           data: parks
         })
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => 
         dispatch({
           type: 'setLoading',
@@ -92,7 +96,9 @@ const App = () => {
           data: posts
         })
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => 
         dispatch({
           type: 'setLoading',
@@ -109,7 +115,9 @@ const App = () => {
           data: posts
         })
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => 
         dispatch({
           type: 'setLoading',

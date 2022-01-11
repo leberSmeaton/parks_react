@@ -67,6 +67,18 @@ export default function reducer(state, action) {
           signedInUser: null
       }
     }
+    case "setJWT" : {
+      return {
+          ...state,
+          jwt: action.data
+      }
+    }
+    case "removeJWT" : {
+      return {
+          ...state,
+          jwt: action.data
+      }
+    }
     default: return state
   } 
 }
