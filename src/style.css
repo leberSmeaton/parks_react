@@ -14,8 +14,8 @@
   @apply flex justify-center items-center h-16 bg-black text-white font-mono;
 }
 
-#map {
+/* #map {
   height: 100%;
   margin: 0;
   padding: 0;
-}
+} */
