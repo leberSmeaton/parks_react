@@ -1,4 +1,8 @@
+// This isn't in use
+
 import parks from '../data/parks';
+
+import picnicAPI from '../config/picnicAPI';
 
 export const getParks = () => {
   // faking a fetch request

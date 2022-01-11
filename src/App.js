@@ -46,18 +46,8 @@ const App = () => {
   // END hamburger menu toggle
 
   /* USE EFFECTS */
-  // Parks data from parkServices.js
-  // get features is also commented out here
+  // Parks data from parkPostServices.js
   useEffect(() => {
-    // getFeatures()
-    //   .then(features => 
-    //     dispatch({
-    //       type: "setFeatures", 
-    //       data: features
-    //     })
-    //   )
-    //   .catch(error => console.log(error))
-
     getParkPosts()
       .then(parks => { 
         console.log(parks)
@@ -127,48 +117,6 @@ const App = () => {
         })  
       )
   }, [])
-
-  // get parkComment 
-  useEffect(() => {
-    getPosts()
-      .then(posts => {
-        console.log(posts)
-        dispatch({
-          type: 'setPost',
-          data: posts
-        })
-      })
-      .catch(err => console.log(err))
-      .finally(() => 
-        dispatch({
-          type: 'setLoading',
-          data: false
-        })  
-      )
-  }, [])
-
-    // getParkPosts by params id
-  // useEffect(() => {
-  //   getParkPost(parkPosts, id)
-  //     .then(park => 
-  //       dispatch({
-  //         type: 'setPark',
-  //         data: park
-  //       })
-  //     )
-  //     .catch(error => console.log(error))
-  //     .finally(() => 
-  //       dispatch({
-  //         type: 'setLoading',
-  //         data: false
-  //       })
-  //     )
-  // }, [parkPosts, id])
-
-  // useEffect(() => {
-  //   retrieveUserFromJWT()
-  //     .then(response => dispatch({type:"setLoggedInUser", data: response.username}))
-  // }, [token])
 
   return (
     <>
