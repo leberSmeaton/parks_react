@@ -2,19 +2,22 @@ import React, { useState } from 'react'
 import {Link} from 'react-router-dom';
 import {
   GoogleMap,
-  useJsApiLoader,
+  // useJsApiLoader,
+  useLoadScript,
   Marker,
   InfoWindow
 } from "@react-google-maps/api";
 import mapStyles from '../mapStyles';
 import parks from '../data/parks';
 
+const libraries = ['places'];
+
 const containerStyle = {
   width: '100vw',
-  height: '90vh'
+  height: '100vh'
 };
 
-export const center = {
+const center = {
   lat: -37.840935,
   lng: 144.946457
 };
@@ -28,32 +31,40 @@ const options = {
 export default function MapView() {
   const [selectedPark, setSelectedPark] = useState(null);
 
-  const { isLoaded } = useJsApiLoader({
-    id: 'google-map-script',
-    // googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY
-    googleMapsApiKey: "AIzaSyC8NxtPpxOWXgvnjId9HRzz-hG9Wlcj6AA"
-  })
+  // const { isLoaded } = useJsApiLoader({
+  //   id: 'google-map-script',
+  //   googleMapsApiKey: "AIzaSyC8NxtPpxOWXgvnjId9HRzz-hG9Wlcj6AA"
+  // })
+  // const [map, setMap] = React.useState(null)
 
-  const [map, setMap] = React.useState(null)
+  // const onLoad = React.useCallback(function callback(map) {
+  //   const bounds = new window.google.maps.LatLngBounds();
+  //   map.fitBounds(bounds);
+  //   setMap(map)
+  // }, [])
 
-  const onLoad = React.useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds();
-    map.fitBounds(bounds);
-    setMap(map)
-  }, [])
+  // const onUnmount = React.useCallback(function callback(map) {
+  //   setMap(null)
+  // }, [])
 
-  const onUnmount = React.useCallback(function callback(map) {
-    setMap(null)
-  }, [])
+  const {isLoaded, loadError} = useLoadScript(
+    {
+      googleMapsApiKey: "AIzaSyC8NxtPpxOWXgvnjId9HRzz-hG9Wlcj6AA",
+      libraries,
+    }
+  )
 
-  return isLoaded ? (
+  if (loadError) return "Error loading maps";
+  if (!isLoaded) return "Loading maps";
+
+  return <div>
     <GoogleMap
       mapContainerStyle={containerStyle}
+      zoom={12}
       center={center}
-      zoom={11}
       options={options}
-      onLoad={onLoad}
-      onUnmount={onUnmount}
+      // onLoad={onLoad}
+      // onUnmount={onUnmount}
     >
       { /* Child components, such as markers, info windows, etc. */ }
       {parks.map((park) => (
@@ -87,10 +98,5 @@ export default function MapView() {
         </InfoWindow>
       )}
     </GoogleMap>
-  ) 
-    : ( 
-    <>
-      <p>Not Loaded</p>
-    </>
-    )
+  </div>
 }
