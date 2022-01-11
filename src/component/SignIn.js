@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { signInUser } from '../services/userServices';
+import { parseError } from '../config/api';
 
 export default function SignIn(props) {
   const initialValues = {
@@ -11,6 +12,7 @@ export default function SignIn(props) {
   const navigate = useNavigate();
 
   const [formUserValues, setUserFormValues] = useState(initialValues)
+  const [errorMessage, setErrorMessage] = useState("")
 
   function handleChange(event) {
     setUserFormValues({
@@ -22,14 +24,21 @@ export default function SignIn(props) {
   function handleSubmit(event) {
     event.preventDefault()
     signInUser(formUserValues)
-      .then(username => {
+      .then(response => {
         dispatchEvent({
           type: "setSignedInUser",
-          data: username
+          data: response.username
+        })
+        dispatchEvent({
+          type: "setJWT",
+          data: response.jwt
         })
         navigate("/")
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        const message = parseError(error);
+        setErrorMessage(message);
+      })
   }
 
   return (
@@ -40,6 +49,7 @@ export default function SignIn(props) {
           <img src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" style={{ width: '100%' }} />
           {/* <form onSubmit={handleSubmit}> */}
           <form onSubmit={handleSubmit}>
+            {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
             <div>
               <label>
                 Username

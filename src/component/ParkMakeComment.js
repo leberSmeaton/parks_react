@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import { useNavigate } from 'react-router';
 import { useGlobalState } from '../utils/stateContext';
 import { createNewParkPost } from '../services/parkPostServices';
+import { parseError } from '../config/api';
 
 export default function ParkMakeComment() {
   
@@ -10,6 +11,7 @@ export default function ParkMakeComment() {
   const {posts} = store;
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
+  const [errorMessage, setErrorMessage] = useState("");
 
   const initialState = {
     park_comment: "",
@@ -31,7 +33,10 @@ export default function ParkMakeComment() {
         setLoading(false)
         navigate("/")
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        const message = parseError(error);
+        setErrorMessage(message);
+      })
   }
 
   function handleChange(event) {
@@ -50,6 +55,7 @@ export default function ParkMakeComment() {
   return (
     <>
       <form id="addParkPost" onSubmit={handleSubmit}>
+          {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
           <label>Add Park Comment: <br />
             <textarea
               id="park_comment"
