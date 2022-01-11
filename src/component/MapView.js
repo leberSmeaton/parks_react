@@ -2,7 +2,6 @@ import React, { useState } from 'react'
 import {Link} from 'react-router-dom';
 import {
   GoogleMap,
-  // useJsApiLoader,
   useLoadScript,
   Marker,
   InfoWindow
@@ -31,22 +30,6 @@ const options = {
 export default function MapView() {
   const [selectedPark, setSelectedPark] = useState(null);
 
-  // const { isLoaded } = useJsApiLoader({
-  //   id: 'google-map-script',
-  //   googleMapsApiKey: "AIzaSyC8NxtPpxOWXgvnjId9HRzz-hG9Wlcj6AA"
-  // })
-  // const [map, setMap] = React.useState(null)
-
-  // const onLoad = React.useCallback(function callback(map) {
-  //   const bounds = new window.google.maps.LatLngBounds();
-  //   map.fitBounds(bounds);
-  //   setMap(map)
-  // }, [])
-
-  // const onUnmount = React.useCallback(function callback(map) {
-  //   setMap(null)
-  // }, [])
-
   const {isLoaded, loadError} = useLoadScript(
     {
       googleMapsApiKey: "AIzaSyC8NxtPpxOWXgvnjId9HRzz-hG9Wlcj6AA",
@@ -63,8 +46,6 @@ export default function MapView() {
       zoom={12}
       center={center}
       options={options}
-      // onLoad={onLoad}
-      // onUnmount={onUnmount}
     >
       { /* Child components, such as markers, info windows, etc. */ }
       {parks.map((park) => (
