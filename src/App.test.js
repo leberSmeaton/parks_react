@@ -7,3 +7,4 @@ test('renders basic empty template', () => {
   const linkElement = getByText(/basic empty template/i);
   expect(linkElement).toBeInTheDocument();
 });
+

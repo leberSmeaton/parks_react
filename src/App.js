@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useReducer } from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route} from 'react-router-dom';
 import { getParkPosts, getParkPost, getPosts, getPost } from './services/parkPostServices';
 import { GlobalStyle } from './styled-components/globalStyles';
 import { StateContext } from './utils/stateContext';
@@ -15,15 +15,16 @@ import Dropdown from './component/Dropdown';
 import ParkPosts from './component/ParkPosts';
 import './style.css';
 import initialState from './config/initialState';
-
+// import { getFeatures } from './services/featuresServices';
+// import { retrieveUserFromJWT } from './services/userServices';
 
 const App = () => {
 
+  // const token = sessionStorage.getItem('jwt');
   const [store, dispatch] = useReducer(reducer, initialState);
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
-
   const toggle = () => {
     setIsOpen(!isOpen);
   };
@@ -44,8 +45,8 @@ const App = () => {
   }) 
   // END hamburger menu toggle
 
-
-  // Parks data from parkServices.js
+  /* USE EFFECTS */
+  // Parks data from parkPostServices.js
   useEffect(() => {
     getParkPosts()
       .then(parks => { 
@@ -55,7 +56,9 @@ const App = () => {
           data: parks
         })
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => 
         dispatch({
           type: 'setLoading',
@@ -73,7 +76,9 @@ const App = () => {
           data: parks
         })
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => 
         dispatch({
           type: 'setLoading',
@@ -91,7 +96,9 @@ const App = () => {
           data: posts
         })
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => 
         dispatch({
           type: 'setLoading',
@@ -108,7 +115,9 @@ const App = () => {
           data: posts
         })
       })
-      .catch(err => console.log(err))
+      .catch(error => {
+        console.log(error.response)
+      })
       .finally(() => 
         dispatch({
           type: 'setLoading',
