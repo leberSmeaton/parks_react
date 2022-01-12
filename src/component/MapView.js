@@ -28,6 +28,8 @@ const options = {
 }
 
 export default function MapView() {
+  // const {parks} = props;
+
   const [selectedPark, setSelectedPark] = useState(null);
 
   const {isLoaded, loadError} = useLoadScript(
@@ -72,9 +74,9 @@ export default function MapView() {
           }}
         >
           <div>
-            <Link to={`/parks/${selectedPark.id}`}>{selectedPark.park_name}</Link><br/>
-            {selectedPark.address_id}: 123 Albert Rd, St Kilda<br/>
-            {selectedPark.feature_id}: sports, playground, toilet
+            <Link to={`/parks/${selectedPark.id}`}>name: {selectedPark.park_name}</Link><br/>
+            address: {selectedPark.address_id}: 123 Albert Rd, St Kilda<br/>
+            feature: {selectedPark.feature_id}: sports, playground, toilet
           </div>
         </InfoWindow>
       )}

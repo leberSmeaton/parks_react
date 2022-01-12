@@ -7,15 +7,16 @@ export const ListPreview = (props) => {
   const {park} = props;
   // const {store} = useGlobalState();
   // const { loading, parks } = store; 
-  console.log(park)
+  // console.log(park)
 
   return (
     <>
-      <Link to={`/parks/${park.id}`}><h4>{park.park_name}</h4></Link>
-      <h4>name: {park.park_name} || All Nations</h4>
-      <p>address: {park.address_id} || Separation St, Northcote VIC 3070</p>
-      <p>feature: {park.feature_id} || picnic, food nearby, nature, skatepark, playground</p>
-      <p>⭐️  ⭐️  ⭐️  ⭐️ </p>
+      <Link to={`/parks/${park.park_id}`}><h4 style={{fontWeight: "bold"}}>{park.name}</h4></Link>
+      {/* <h4>name: {park.name} || All Nations</h4> */}
+      <p>address: {park.address_id}</p>
+      <p>category: {park.category.name}</p>
+      <p>feature: {park.feature.name}</p>
+      <hr/>
     </>
   )
 }

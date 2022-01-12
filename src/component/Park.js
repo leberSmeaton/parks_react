@@ -12,18 +12,18 @@ export default function Park() {
   // const { parkPosts } = store;
   const [park, setPark] = useState(null);
   const [loading, setLoading] = useState(true);
-  const {id} = useParams();
+  const {park_id} = useParams();
 
   useEffect(() => {
     // getParkPost(parkPosts, id)
-    getParkPost(id)
+    getParkPost(park_id)
       .then(park => setPark(park))
       .catch(error => {
         console.log(error.response)
       })
       .finally(() => setLoading(false)
       )
-  }, [id])
+  }, [park_id])
   // }, [id, parkPosts])
 
   if(!park) {
