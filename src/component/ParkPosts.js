@@ -16,7 +16,10 @@ export default function ParkPosts() {
 
   return (
     <>
-      <h2>All the parks</h2>
+      <br></br>
+      <h2 style={{fontWeight: "bold", fontSize: "30px"}}>All the parks</h2>
+      <br></br>
+      <hr></hr>
       {/* This button isn't used atm */}
       {/* <button onClick={sortAZ}>Sort A-Z</button> */}
       {
