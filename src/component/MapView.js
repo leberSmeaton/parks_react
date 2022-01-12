@@ -1,4 +1,6 @@
-import React, { useState } from 'react' 
+import React, { useState } from 'react';
+// import { useParams } from 'react-router'; 
+// import { getParkPost } from '../services/parkPostServices';
 import {Link} from 'react-router-dom';
 import {
   GoogleMap,
@@ -28,9 +30,25 @@ const options = {
 }
 
 export default function MapView() {
-  // const {parks} = props;
-
   const [selectedPark, setSelectedPark] = useState(null);
+
+  // // -----
+  // const [parks, setParks] = useState(null);
+  // const [loading, setLoading] = useState(true);
+  // const {id} = useParams();
+
+  // useEffect(() => {
+  //   // getParkPost(parkPosts, id)
+  //   getParkPost(id)
+  //     .then(park => setParks(park))
+  //     .catch(error => {
+  //       console.log(error.response)
+  //     })
+  //     .finally(() => setLoading(false)
+  //     )
+  // }, [id])
+
+  // // -----
 
   const {isLoaded, loadError} = useLoadScript(
     {
@@ -75,6 +93,7 @@ export default function MapView() {
         >
           <div>
             <Link to={`/parks/${selectedPark.id}`}>name: {selectedPark.park_name}</Link><br/>
+            <p>{selectedPark.name}</p>
             address: {selectedPark.address_id}: 123 Albert Rd, St Kilda<br/>
             feature: {selectedPark.feature_id}: sports, playground, toilet
           </div>

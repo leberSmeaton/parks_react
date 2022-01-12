@@ -36,11 +36,10 @@ export const getParkPosts = async() => {
 //   })
 // }
 
-// export const getParkPost = async (id) => {
-export const getParkPost = async (park_id) => {
+export const getParkPost = async (id) => {
   try {
-    // const response = await picnicAPI.get('/parks/' + id)
-    const response = await picnicAPI.get('/parks/' + park_id) // 
+    const response = await picnicAPI.get('/parks/' + id)
+    // const response = await picnicAPI.get('/parks/' + park_id) // 
     // const response = await picnicAPI.get('/park') // ????????
     console.log(response);
     return response.data;
@@ -61,12 +60,11 @@ export const getParkPost = async (park_id) => {
 //   })
 // }
 
-export const getPosts = async (park_id) => {
-// export const getPosts = async (id) => {
+export const getPosts = async (id) => {
   try {
     // const response = await picnicAPI.get('/posts')
-    // const response = await picnicAPI.get('/parks/' + id + '/comments')
-    const response = await picnicAPI.get('/parks/' + park_id + '/comments')
+    const response = await picnicAPI.get('/parks/' + id + '/comments')
+    // const response = await picnicAPI.get('/parks/' + park_id + '/comments')
     // const response = await picnicAPI.get('/reviews')
     console.log(response);
     return response.data;
@@ -83,11 +81,11 @@ export const getPosts = async (park_id) => {
 //     }, 500)
 //   })
 // }
-export const getPost = async (park_id) => {
+export const getPost = async (id) => {
   try {
     // const response = await picnicAPI.get('/posts/' + id)
     // const response = await picnicAPI.get('/parks/' + id + '/comments/' + id)
-    const response = await picnicAPI.get('/parks/comments/' + park_id) // ?
+    const response = await picnicAPI.get('/parks/comments/' + id) // ?
     // const response = await picnicAPI.get('/review')
     console.log(response);
     return response.data;

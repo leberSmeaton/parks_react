@@ -149,8 +149,8 @@ const App = () => {
           <Routes>
             <Route path="/" element={<MapView />}></Route>
             <Route path="/parks" element={<ParkPosts />}></Route>
-            <Route path="/parks/:park_id" element={<Park/>} />
-              {/* <Route path="/newcomment" element={<NewParkComment  />} /> */}
+            <Route path="/parks/:id" element={<Park/>} />
+              {/* <Route path="/review" element={<NewParkComment  />} /> */}
             {/* </Route> */}
             <Route path="/about" element={<About />}></Route>
             <Route path="/auth/signin" element={<SignIn />}></Route>
