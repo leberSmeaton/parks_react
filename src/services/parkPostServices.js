@@ -60,12 +60,11 @@ export const getParkPost = async (id) => {
 //   })
 // }
 
-export const getPosts = async (id) => {
+export const getPosts = async (park_id) => {
   try {
     // const response = await picnicAPI.get('/posts')
-    const response = await picnicAPI.get('/parks/' + id + '/comments')
+    const response = await picnicAPI.get('/parks/' + park_id + '/comments')
     // const response = await picnicAPI.get('/parks/' + park_id + '/comments')
-    // const response = await picnicAPI.get('/reviews')
     console.log(response);
     return response.data;
   } catch (err) {
@@ -81,6 +80,8 @@ export const getPosts = async (id) => {
 //     }, 500)
 //   })
 // }
+
+
 export const getPost = async (id) => {
   try {
     // const response = await picnicAPI.get('/posts/' + id)
@@ -94,6 +95,9 @@ export const getPost = async (id) => {
     throw err
   }
 }
+
+
+
 
 // don't think this is needed as the api database already has id
   // const getNextId = () => {
