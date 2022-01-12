@@ -19,7 +19,8 @@ import picnicAPI from '../config/api';
 export const getParkPosts = async() => {
   try {
     const response = await picnicAPI.get('/parks')
-    console.log("response: " + response);
+    // console.log("response: " + response);
+    console.log(response);
     return response.data;
   } catch (err) {
     console.log("Get Park Posts " + err)
@@ -36,12 +37,11 @@ export const getParkPosts = async() => {
 // }
 
 export const getParkPost = async (id) => {
-// export const getParkPost = async (park_id) => {
   try {
     const response = await picnicAPI.get('/parks/' + id)
-    // const response = await picnicAPI.get('/parks/' + park_id) // ?
+    // const response = await picnicAPI.get('/parks/' + park_id) // 
     // const response = await picnicAPI.get('/park') // ????????
-    console.log("response: " + response);
+    console.log(response);
     return response.data;
   } catch (err) {
     console.log("Get Park Post " + err)
@@ -60,14 +60,13 @@ export const getParkPost = async (id) => {
 //   })
 // }
 
-export const getPosts = async () => {
-// export const getPosts = async (id) => {
+export const getPosts = async (id) => {
   try {
     // const response = await picnicAPI.get('/posts')
-    // const response = await picnicAPI.get('/parks/' + id + '/comments')
+    const response = await picnicAPI.get('/parks/' + id + '/comments')
     // const response = await picnicAPI.get('/parks/' + park_id + '/comments')
-    const response = await picnicAPI.get('/reviews')
-    console.log("response: " + response);
+    // const response = await picnicAPI.get('/reviews')
+    console.log(response);
     return response.data;
   } catch (err) {
     console.log("Get Posts " + err)
@@ -86,9 +85,9 @@ export const getPost = async (id) => {
   try {
     // const response = await picnicAPI.get('/posts/' + id)
     // const response = await picnicAPI.get('/parks/' + id + '/comments/' + id)
-    // const response = await picnicAPI.get('/parks/comments/' + park_id) ????
-    const response = await picnicAPI.get('/review')
-    console.log("response: " + response);
+    const response = await picnicAPI.get('/parks/comments/' + id) // ?
+    // const response = await picnicAPI.get('/review')
+    console.log(response);
     return response.data;
   } catch (err) {
     console.log("Get Post " + err)

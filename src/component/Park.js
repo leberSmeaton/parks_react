@@ -5,6 +5,7 @@ import { getParkPost } from '../services/parkPostServices';
 // import { useGlobalState } from '../utils/stateContext';
 import ParkComment from './ParkComment';
 import ParkMakeComment from './ParkMakeComment';
+import wine from '../data/wine';
 
 
 export default function Park() {
@@ -35,15 +36,16 @@ export default function Park() {
       <ul>
         <li>
           <p></p>
-          <h4>{park.park_icon} | {park.park_name}</h4>
-          <p>address: {park.address_id} || Separation St, Northcote VIC 3070</p>
-          <p>feature: {park.feature_id} || picnic, food nearby, nature, skatepark, playground</p>
-          <p>⭐️  ⭐️  ⭐️  ⭐️ </p>
+          <h4 style={{fontWeight: "bold"}}>{park.park_icon} | {park.name}</h4>
+          <p>address: {park.address.number ? park.address.number : null} {park.address.street}, {park.address.suburb}, {park.address.postcode}</p>
+          <p>category: {park.category.name}</p>
+          <p>feature: {park.feature.name}, toilets, cafe near by</p>
         </li>
         <br />
         <li>
-          <p>cheese pair: {park.cheese_pair}</p>
-          <p>wine pair: {park.wine_pair}</p>
+          <h4>Pair your picnic with...</h4>
+          <p>cheese pair: {park.cheese}</p>
+          <p>wine pair: {wine[Math.floor(Math.random()*wine.length)]}</p>
         </li>
         <br />
         <hr />

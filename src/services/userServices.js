@@ -14,3 +14,14 @@ export const signInUser = async (signInDetails) => {
 //     resolve(signInDetails.username)
 //   })
 // }
+
+export const retrieveUserFromJWT = async () => {
+  try {
+    const jwt = sessionStorage.getItem('jwt')
+    const response = await picnicAPI.post('/auth/signed_in_user', {jwt: jwt})
+    return response.data
+  } catch(err) {
+    console.log("Retrieve user from JWT " + err)
+    throw err
+  }
+}

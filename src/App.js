@@ -15,6 +15,7 @@ import Dropdown from './component/Dropdown';
 import ParkPosts from './component/ParkPosts';
 import './style.css';
 import initialState from './config/initialState';
+import { retrieveUserFromJWT } from './services/userServices';
 // import { getFeatures } from './services/featuresServices';
 // import { retrieveUserFromJWT } from './services/userServices';
 
@@ -22,6 +23,7 @@ const App = () => {
 
   // const token = sessionStorage.getItem('jwt');
   const [store, dispatch] = useReducer(reducer, initialState);
+  const token = sessionStorage.getItem('jwt');
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
@@ -50,7 +52,7 @@ const App = () => {
   useEffect(() => {
     getParkPosts()
       .then(parks => { 
-        console.log(parks)
+        // console.log(parks)
         dispatch({
           type: 'setParkPosts',
           data: parks
@@ -126,6 +128,17 @@ const App = () => {
       )
   }, [])
 
+  // Check user against JWT token for persistent authentication
+  useEffect(() => {
+    retrieveUserFromJWT()
+      .then(response => {
+        dispatch({
+          type: "setSignedInUser",
+          data: response.username
+        })
+      })
+  }, [token])
+
   return (
     <>
       <StateContext.Provider value={{ store: store, dispatch }}>
@@ -137,10 +150,10 @@ const App = () => {
             <Route path="/" element={<MapView />}></Route>
             <Route path="/parks" element={<ParkPosts />}></Route>
             <Route path="/parks/:id" element={<Park/>} />
-              {/* <Route path="/newcomment" element={<NewParkComment  />} /> */}
+              {/* <Route path="/review" element={<NewParkComment  />} /> */}
             {/* </Route> */}
             <Route path="/about" element={<About />}></Route>
-            <Route path="/signin" element={<SignIn />}></Route>
+            <Route path="/auth/signin" element={<SignIn />}></Route>
             <Route path="/signup" element={<SignUp />}></Route>
           </Routes>
           <Footer />
