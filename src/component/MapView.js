@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
-// import { useParams } from 'react-router'; 
-// import { getParkPost } from '../services/parkPostServices';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router'; 
+import { getParkPost } from '../services/parkPostServices';
 import {Link} from 'react-router-dom';
 import {
   GoogleMap,
@@ -9,7 +9,7 @@ import {
   InfoWindow
 } from "@react-google-maps/api";
 import mapStyles from '../mapStyles';
-import parks from '../data/parks';
+// import parks from '../data/parks';
 
 const libraries = ['places'];
 
@@ -31,24 +31,22 @@ const options = {
 
 export default function MapView() {
   const [selectedPark, setSelectedPark] = useState(null);
+  // -----
+  const [parks, setParks] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const {id} = useParams();
 
-  // // -----
-  // const [parks, setParks] = useState(null);
-  // const [loading, setLoading] = useState(true);
-  // const {id} = useParams();
+  useEffect(() => {
+    getParkPost(id)
+      .then(park => setParks(park))
+      .catch(error => {
+        console.log(error.response)
+      })
+      .finally(() => setLoading(false)
+      )
+  }, [id])
 
-  // useEffect(() => {
-  //   // getParkPost(parkPosts, id)
-  //   getParkPost(id)
-  //     .then(park => setParks(park))
-  //     .catch(error => {
-  //       console.log(error.response)
-  //     })
-  //     .finally(() => setLoading(false)
-  //     )
-  // }, [id])
-
-  // // -----
+  // -----
 
   const {isLoaded, loadError} = useLoadScript(
     {
@@ -67,7 +65,6 @@ export default function MapView() {
       center={center}
       options={options}
     >
-      { /* Child components, such as markers, info windows, etc. */ }
       {parks.map((park) => (
         <Marker 
           key={park.id}
