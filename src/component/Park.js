@@ -38,6 +38,7 @@ export default function Park() {
           <p></p>
           <h4 style={{fontWeight: "bold", fontSize: "30px"}}>{park.park_icon} {park.name}</h4>
           <p>address: {park.address.number ? park.address.number : null} {park.address.street}, {park.address.suburb}, {park.address.postcode}</p>
+          <p>coords: {park.latitude}, {park.longitude}</p>
           <p>category: {park.category.name}</p>
           <p>feature: {park.feature.name}, toilets, cafe near by</p>
         </li>

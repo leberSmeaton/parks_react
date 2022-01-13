@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router'; 
-import { getParkPost } from '../services/parkPostServices';
+import React, { useState } from 'react';
+// import { useParams } from 'react-router'; 
+// import { getParkPost } from '../services/parkPostServices';
+import { useGlobalState } from '../utils/stateContext'
 import {Link} from 'react-router-dom';
 import {
   GoogleMap,
@@ -15,7 +16,7 @@ const libraries = ['places'];
 
 const containerStyle = {
   width: '100vw',
-  height: '100vh'
+  height: '82vh'
 };
 
 const center = {
@@ -31,22 +32,8 @@ const options = {
 
 export default function MapView() {
   const [selectedPark, setSelectedPark] = useState(null);
-  // -----
-  const [parks, setParks] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const {id} = useParams();
-
-  useEffect(() => {
-    getParkPost(id)
-      .then(park => setParks(park))
-      .catch(error => {
-        console.log(error.response)
-      })
-      .finally(() => setLoading(false)
-      )
-  }, [id])
-
-  // -----
+  const {store} = useGlobalState();
+  const {parkPosts} = store;
 
   const {isLoaded, loadError} = useLoadScript(
     {
@@ -65,7 +52,7 @@ export default function MapView() {
       center={center}
       options={options}
     >
-      {parks.map((park) => (
+      {parkPosts.map((park) => (
         <Marker 
           key={park.id}
           position={{
@@ -89,10 +76,9 @@ export default function MapView() {
           }}
         >
           <div>
-            <Link to={`/parks/${selectedPark.id}`}>name: {selectedPark.park_name}</Link><br/>
-            <p>{selectedPark.name}</p>
-            address: {selectedPark.address_id}: 123 Albert Rd, St Kilda<br/>
-            feature: {selectedPark.feature_id}: sports, playground, toilet
+            <h4 style={{fontWeight: "bold"}}><Link to={`/parks/${selectedPark.id}`}>{selectedPark.name}</Link></h4>
+            {selectedPark.address.number ? selectedPark.address.number : null} {selectedPark.address.street},<br/> {selectedPark.address.suburb}, {selectedPark.address.postcode}<br/>
+            {selectedPark.category.name}
           </div>
         </InfoWindow>
       )}
