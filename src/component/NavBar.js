@@ -27,7 +27,7 @@ export default function NavBar({toggle}) {
         {signedInUser ?
           (<NavLink className="p-4" to="/">Sign Out</NavLink>)
         :
-          (<NavLink className="p-4" to="auth/signin">Sign In</NavLink>)
+          (<NavLink className="p-4" to="/auth/signin">Sign In</NavLink>)
         }
         
         <span>| Hello {signedInUser || "guest"}</span>
