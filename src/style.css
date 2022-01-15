@@ -2,6 +2,7 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Nav Bar */
 .nav-bar {
   @apply flex justify-between items-center h-16 bg-white text-black relative shadow-sm font-mono;
 }
@@ -13,3 +14,35 @@
 .footer {
   @apply flex justify-center items-center h-16 bg-black text-white font-mono;
 }
+
+/* About */
+
+section h2 {  
+  @apply text-xl font-bold p-14;
+}
+
+.about-container {
+  @apply flex pl-14;
+}
+
+.park-img {
+  @apply w-1/2;
+}
+
+.about-park {
+  @apply px-14 w-1/2;
+}
+
+.partners-container {
+  @apply flex pl-14;
+}
+
+.cheese-wine-img {
+  @apply w-1/2 h-1/2;
+}
+
+.about-partners {
+  @apply px-14 pb-14 w-1/2;
+}
+
+
