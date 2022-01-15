@@ -45,4 +45,12 @@ section h2 {
   @apply px-14 pb-14 w-1/2;
 }
 
+/* Sign In/Sign Up */
 
+.sign-container {
+  @apply flex pl-14 pb-14;
+}
+
+.sign-in-form {
+  @apply px-14 w-1/2;
+}

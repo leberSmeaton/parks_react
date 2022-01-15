@@ -45,12 +45,12 @@ export default function SignIn(props) {
     <>
       <section>
         <h2>Sign In</h2>
-        <div>
-          <img src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" style={{ width: '100%' }} />
+        <div className='sign-container'>
+          <img className='park-img'  src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" />
           {/* <form onSubmit={handleSubmit}> */}
           <form onSubmit={handleSubmit}>
             {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
-            <div>
+            <div className='sign-in-form'>
               <label>
                 Username
                 <input
@@ -84,11 +84,12 @@ export default function SignIn(props) {
               <button type="submit" className="primary">
                 Sign In
               </button>
+              <h2><Link to="/signup">Create an account</Link></h2>
             </div>
           </form>
         </div>
       </section>
-      <h2><Link to="/signup">Create an account</Link></h2>
+      
     </>
   )
 }
