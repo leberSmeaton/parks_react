@@ -17,17 +17,12 @@
 
 /* About */
 
-section h2 {
-  padding-left: 30px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  text-align: center;
-  font-weight: 700;
+section h2 {  
+  @apply text-lg font-bold pb-10;
 }
 
 .about-container {
-  background: salmon;
-  padding-left: 30px;
+  @apply flex p-14;
 }
 
 .park-img {
@@ -35,19 +30,19 @@ section h2 {
 }
 
 .about-park {
-  @apply w-1/2;
+  @apply px-14 w-1/2;
 }
 
 .partners-container {
-  background: blueviolet;
+  @apply flex p-14;
 }
 
 .cheese-wine-img {
-  @apply w-1/2;
+  @apply w-1/2 h-1/2;
 }
 
 .about-partners {
-  @apply w-1/2;
+  @apply px-14 w-1/2;
 }
 
 
