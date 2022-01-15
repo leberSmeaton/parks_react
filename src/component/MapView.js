@@ -14,16 +14,19 @@ import mapStyles from '../mapStyles';
 
 const libraries = ['places'];
 
+// Sets Google Maps API within a container
 const containerStyle = {
   width: '100vw',
   height: '82vh'
 };
 
+// Centers Google Maps API to Melbourne coordinates
 const center = {
   lat: -37.840935,
   lng: 144.946457
 };
 
+// mapStyles sets the Google Maps API colour theme
 const options = {
   styles: mapStyles,
   disableDefaultUI: true,
@@ -37,6 +40,7 @@ export default function MapView() {
 
   const {isLoaded, loadError} = useLoadScript(
     {
+      // API key needs to be stored in env variable
       googleMapsApiKey: "AIzaSyC8NxtPpxOWXgvnjId9HRzz-hG9Wlcj6AA",
       libraries,
     }
