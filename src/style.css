@@ -18,11 +18,11 @@
 /* About */
 
 section h2 {  
-  @apply text-lg font-bold pb-10;
+  @apply text-xl font-bold p-14;
 }
 
 .about-container {
-  @apply flex p-14;
+  @apply flex pl-14;
 }
 
 .park-img {
@@ -34,7 +34,7 @@ section h2 {
 }
 
 .partners-container {
-  @apply flex p-14;
+  @apply flex pl-14;
 }
 
 .cheese-wine-img {
@@ -42,7 +42,7 @@ section h2 {
 }
 
 .about-partners {
-  @apply px-14 w-1/2;
+  @apply px-14 pb-14 w-1/2;
 }
 
 
