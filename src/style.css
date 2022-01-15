@@ -45,4 +45,24 @@ section h2 {
   @apply px-14 pb-14 w-1/2;
 }
 
+/* Sign In/Sign Up */
 
+.sign-container {
+  @apply flex pl-14 pb-14;
+}
+
+.sign-in-form {
+  @apply px-14 w-1/2;
+}
+
+label {
+  @apply font-bold;
+}
+
+.buttons {
+  @apply flex space-x-4 pt-14;
+}
+
+button {
+  @apply bg-green-800 hover:bg-green-600 text-white font-bold py-2 px-4 border border-zinc-800 rounded;
+}
