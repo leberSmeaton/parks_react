@@ -81,10 +81,16 @@ export default function SignIn(props) {
                   // onChange={(e) => setPasswordConfirmation(e.currentTarget.value)}
                 />
               </label> */}
-              <button type="submit" className="primary">
-                Sign In
-              </button>
-              <h2><Link to="/signup">Create an account</Link></h2>
+              <div className='buttons'>
+                <div>
+                  <button>
+                  Sign In
+                  </button>
+                </div>
+                <div>
+                  <button><Link to="/signup">Create an account</Link></button>
+                </div>
+              </div>
             </div>
           </form>
         </div>
