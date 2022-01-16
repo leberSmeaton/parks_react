@@ -19,15 +19,15 @@ export default function NavBar({toggle}) {
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
         </svg>
       </div>
-      <div className="pr-8 md:block hidden">
-        <NavLink className="p-4" to="/">Map</NavLink>
-        <NavLink className="p-4" to="/parks">List</NavLink>
-        <NavLink className="p-4" to="/about">About</NavLink>
+      <div className="flexpr-8 md:block hidden">
+        <NavLink className="nav-links p-4" to="/">Map</NavLink>
+        <NavLink className="nav-links p-4" to="/parks">List</NavLink>
+        <NavLink className="nav-links p-4" to="/about">About</NavLink>
         
         {signedInUser ?
-          (<NavLink className="p-4" to="/">Sign Out</NavLink>)
+          (<NavLink className="nav-links p-4" to="/">Sign Out</NavLink>)
         :
-          (<NavLink className="p-4" to="/auth/signin">Sign In</NavLink>)
+          (<NavLink className="nav-links p-4" to="/auth/signin">Sign In</NavLink>)
         }
         
         <span>| Hello {signedInUser || "guest"}</span>

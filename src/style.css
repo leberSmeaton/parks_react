@@ -7,17 +7,27 @@
 .nav-bar {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex justify-between items-center h-16 bg-[#483434] text-white relative shadow-sm tracking-widest leading-7;
+  @apply flex justify-between items-center h-16 bg-[#483434] text-white relative shadow-sm pr-8 tracking-widest leading-7 ;
+}
+
+.nav-links {
+  @apply hover:bg-[#6B4F4F];
 }
 
 .picnic-vic {
   font-family: 'Rubik',
   sans-serif;
-  @apply text-2xl font-bold italic drop-shadow-lg;
+  @apply text-2xl font-bold italic drop-shadow-lg ;
 }
 
 .dropdown {
-  @apply grid grid-rows-4 text-center items-center bg-green-500 font-mono;
+  font-family: 'Rubik',
+  sans-serif;
+  @apply grid grid-rows-4 text-center items-center bg-[#6B4F4F] pb-5;
+}
+
+.drop-links {
+  @apply hover:bg-white;
 }
 
 /* Footer */
