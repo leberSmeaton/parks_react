@@ -7,11 +7,11 @@
 .nav-bar {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex justify-between items-center h-16 bg-[#483434] text-white relative shadow-sm pr-8 tracking-widest leading-7 ;
+  @apply flex justify-between items-center h-16 bg-[#32502E] text-white pr-8 tracking-widest leading-7 drop-shadow-2xl;
 }
 
 .nav-links {
-  @apply hover:bg-[#6B4F4F];
+  @apply hover:bg-[#53884c];
 }
 
 .picnic-vic {
@@ -23,7 +23,7 @@
 .dropdown {
   font-family: 'Rubik',
   sans-serif;
-  @apply grid grid-rows-4 text-center items-center bg-[#6B4F4F] pb-5;
+  @apply grid grid-rows-4 text-center items-center bg-[#53884c] pb-5;
 }
 
 .drop-links {
@@ -35,7 +35,7 @@
 .footer {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex justify-center items-center h-16 bg-black text-white tracking-widest;
+  @apply flex justify-center items-center h-16 bg-[#32502E] text-white tracking-widest;
 }
 
 .github-img {
