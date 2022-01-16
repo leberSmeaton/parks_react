@@ -8,16 +8,16 @@ const Dropdown = ({isOpen, toggle}) => {
   
   return (
     <div className={isOpen? 'dropdown': 'hidden'}>
-      <NavLink className="p-4" to="/">Map</NavLink>
-      <NavLink className="p-4" to="/parks">List</NavLink>
-      <NavLink className="p-4" to="/about">About</NavLink>
+      <NavLink className="drop-links p-4" to="/">Map</NavLink>
+      <NavLink className="drop-links flexp-4" to="/parks">List</NavLink>
+      <NavLink className="drop-links tablep-4" to="/about">About</NavLink>
       {/* <NavLink className="p-4" to="/auth/signin">Sign In</NavLink> */}
       {signedInUser ?
-        (<NavLink className="p-4" to="/">Sign Out</NavLink>)
+        (<NavLink className="drop-links p-4" to="/">Sign Out</NavLink>)
       :
-        (<NavLink className="p-4" to="/auth/signin">Sign In</NavLink>)
+        (<NavLink className="drop-links p-4" to="/auth/signin">Sign In</NavLink>)
       }
-      <span>| Hello {signedInUser || "guest"}</span>
+      <span>| Hello, {signedInUser || "guest"}</span>
     </div>
   )
 }
