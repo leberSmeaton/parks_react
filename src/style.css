@@ -35,7 +35,7 @@
 .footer {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex justify-center items-center h-16 bg-black text-white tracking-widest leading-7;
+  @apply flex justify-center items-center h-16 bg-black text-white tracking-widest;
 }
 
 .github-img {
@@ -47,7 +47,7 @@
 section h2 {  
   font-family: 'Rubik',
   sans-serif;
-  @apply text-xl font-bold p-8 tracking-widest;
+  @apply text-2xl font-bold p-8 tracking-widest;
 }
 
 .about-container {
@@ -83,7 +83,7 @@ section h2 {
 .sign-container {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex pl-8 pb-14 tracking-widest leading-7;
+  @apply flex pl-8 pb-14 tracking-widest leading-loose;
 }
 
 .sign-in-form {

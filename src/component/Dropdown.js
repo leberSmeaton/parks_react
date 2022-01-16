@@ -17,7 +17,7 @@ const Dropdown = ({isOpen, toggle}) => {
       :
         (<NavLink className="drop-links p-4" to="/auth/signin">Sign In</NavLink>)
       }
-      <span>| Hello {signedInUser || "guest"}</span>
+      <span>| Hello, {signedInUser || "guest"}</span>
     </div>
   )
 }

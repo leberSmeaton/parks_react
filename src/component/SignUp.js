@@ -10,11 +10,11 @@ export default function SignUp() {
     <>
       <section>
         <h2>Sign Up</h2>
-        <div>
-          <img src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" style={{ width: '100%' }} />
+        <div className='sign-container'>
+          <img className='park-img' src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" />
           {/* <form onSubmit={handleSubmit}> */}
           <form>
-            <div>
+            <div className='sign-in-form'>
               <label>
                 Username
                 <input
@@ -31,6 +31,7 @@ export default function SignUp() {
                   // onChange={(e) => setEmail(e.currentTarget.value)}
                 />
               </label>
+              <br />
               <label>
                 User Icon
                 <input
@@ -56,14 +57,20 @@ export default function SignUp() {
                   // onChange={(e) => setPassword(e.currentTarget.value)}
                 />
               </label>
-              <button type="submit" className="primary">
-                Sign In
-              </button>
+              <div className='buttons'>
+                <div>
+                  <button class='bg-green-800'  type="submit">
+                  Sign In
+                  </button>
+                </div>
+                <div>
+                  <button><Link to="/signin">Already Signed Up? Click here.</Link></button>
+                </div>
+              </div>
             </div>
           </form>
         </div>
       </section>
-      <h2><Link to="/signin">Already Signed Up? Click here.</Link></h2>
     </>
   )
 }

@@ -30,7 +30,7 @@ export default function NavBar({toggle}) {
           (<NavLink className="nav-links p-4" to="/auth/signin">Sign In</NavLink>)
         }
         
-        <span>| Hello {signedInUser || "guest"}</span>
+        <span>| Hello, {signedInUser || "guest"}</span>
       </div>
       
     </nav>
