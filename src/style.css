@@ -20,10 +20,16 @@
   @apply grid grid-rows-4 text-center items-center bg-green-500 font-mono;
 }
 
+/* Footer */
+
 .footer {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex justify-center items-center h-16 bg-black text-white;
+  @apply flex justify-center items-center h-16 bg-black text-white tracking-widest leading-7;
+}
+
+.github-img {
+  @apply h-10 pr-3;
 }
 
 /* About */
