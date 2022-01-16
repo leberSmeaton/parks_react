@@ -7,7 +7,7 @@
 .nav-bar {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex justify-between items-center h-16 bg-[#483434] text-white relative shadow-sm;
+  @apply flex justify-between items-center h-16 bg-[#483434] text-white relative shadow-sm tracking-widest leading-7;
 }
 
 .picnic-vic {
@@ -67,7 +67,7 @@ section h2 {
 .sign-container {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex pl-8 pb-14;
+  @apply flex pl-8 pb-14 tracking-widest leading-7;
 }
 
 .sign-in-form {
