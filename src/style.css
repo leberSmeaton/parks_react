@@ -4,7 +4,13 @@
 
 /* Nav Bar */
 .nav-bar {
-  @apply flex justify-between items-center h-16 bg-white text-black relative shadow-sm font-mono;
+  @apply flex justify-between items-center h-16 bg-white text-black relative shadow-sm;
+}
+
+.picnic-vic {
+  font-family: 'Lora',
+  serif;
+  @apply text-2xl font-bold;
 }
 
 .dropdown {
@@ -18,11 +24,11 @@
 /* About */
 
 section h2 {  
-  @apply text-xl font-bold p-14;
+  @apply text-xl font-bold p-8;
 }
 
 .about-container {
-  @apply flex pl-14;
+  @apply flex pl-8;
 }
 
 .park-img {
@@ -30,11 +36,11 @@ section h2 {
 }
 
 .about-park {
-  @apply px-14 w-1/2;
+  @apply px-8 w-1/2;
 }
 
 .partners-container {
-  @apply flex pl-14;
+  @apply flex pl-8;
 }
 
 .cheese-wine-img {
@@ -42,7 +48,7 @@ section h2 {
 }
 
 .about-partners {
-  @apply px-14 pb-14 w-1/2;
+  @apply px-8 pb-14 w-1/2;
 }
 
 /* Sign In/Sign Up */
