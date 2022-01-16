@@ -46,7 +46,7 @@ export default function SignIn(props) {
       <section>
         <h2>Sign In</h2>
         <div className='sign-container'>
-          <img className='park-img'  src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" />
+          <img className='park-img'  src={process.env.PUBLIC_URL + '/outdoorcinema_3.jpeg'} alt="people at an outdoor cinema" />
           {/* <form onSubmit={handleSubmit}> */}
           <form onSubmit={handleSubmit}>
             {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
