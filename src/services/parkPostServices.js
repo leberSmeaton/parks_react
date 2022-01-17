@@ -3,17 +3,7 @@
 
 import picnicAPI from '../config/api';
 
-// we don't need this for id and date when database is connected
 
-// PARKS
-// export const getParks = () => {
-//   // faking a fetch request
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve(parks)
-//     }, 2000)
-//   })
-// }
 
 export const getParks = async() => {
   try {
@@ -118,7 +108,7 @@ export const getPost = async (id) => {
 // CREATE/POST COMMENT
 export const createNewPark = async (parkPostObject) => {
   try {
-    const response = await picnicAPI.post('/posts', parkPostObject)
+    const response = await picnicAPI.post('/parks/new', parkPostObject)
     return response.data;
   } catch (err) {
     console.log("Create New Park Post " + err)

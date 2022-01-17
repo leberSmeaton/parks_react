@@ -1,21 +1,20 @@
 const stateReducer = (state, action) => {
-  switch(action.type) {
-    case 'setParkPosts':{
+  switch (action.type) {
+    case "setParkPosts": {
       return {
         ...state,
-        parkPosts: action.data
-      }
+        parkPosts: action.data,
+      };
     }
-    case 'addParkPosts':{
+    case "addParkPosts": {
       // do some validation on action.data (the new project)
-      if(action.data.length > 0) {
+      if (action.data.length > 0) {
         return {
           ...state,
-          parkPosts: [action.data, ...state.projects]
-        }
-      }
-      else {
-        return state
+          parkPosts: [action.data, ...state.projects],
+        };
+      } else {
+        return state;
       }
     }
     /* toggle park post open and closed... is this needed?
@@ -25,64 +24,79 @@ const stateReducer = (state, action) => {
         parkPosts: state.parkPosts === true ? true : false
       }
     } */
-    case 'setLoading':{
+    case "setLoading": {
       return {
         ...state,
-        loading: action.data
-      }
+        loading: action.data,
+      };
     }
-    case 'setPark':{
+    case "setPark": {
       return {
         ...state,
-        parks: action.data
-      }
+        parks: action.data,
+      };
     }
-    case 'setPost':{
+    case "setPost": {
       return {
         ...state,
-        posts: action.data
-      }
+        posts: action.data,
+      };
     }
-    case 'setPosts':{
+    case "setPosts": {
       return {
         ...state,
-        posts: action.data
-      }
+        posts: action.data,
+      };
     }
-    case 'setFeatures':{
+    case "setCategories": {
       return {
         ...state,
-        features: action.data
-      }
+        categories: action.data,
+      };
     }
-    case "setSignedInUser" : {
+
+    case "setFeatures": {
       return {
-          ...state,
-          signedInUser: action.data
-      }
+        ...state,
+        features: action.data,
+      };
     }
-    case "removeSignedInUser" : {
+
+    case "setAddresses": {
       return {
-          ...state,
-          signedInUser: null
-      }
+        ...state,
+        addresses: action.data,
+      };
+    } 
+    case "setSignedInUser": {
+      return {
+        ...state,
+        signedInUser: action.data,
+      };
     }
-    case "setJWT" : {
+    case "removeSignedInUser": {
+      return {
+        ...state,
+        signedInUser: null,
+      };
+    }
+    case "setJWT": {
       // when I set the jwt, I also want to call on the session storage
-      sessionStorage.setItem('jwt', action.data);
+      sessionStorage.setItem("jwt", action.data);
       return {
-          ...state,
-          jwt: action.data
-      }
+        ...state,
+        jwt: action.data,
+      };
     }
-    case "removeJWT" : {
-      sessionStorage.removeItem('jwt', action.data);
+    case "removeJWT": {
+      sessionStorage.removeItem("jwt", action.data);
       return {
-          ...state,
-          jwt: action.data
-      }
+        ...state,
+        jwt: action.data,
+      };
     }
-    default: return state
-  } 
-}
-export default stateReducer
+    default:
+      return state;
+  }
+};
+export default stateReducer;

@@ -10,12 +10,18 @@ import {
   getPosts,
   getPost,
 } from "./services/parkPostServices";
+import {
+  getAddresses,
+  getCategories,
+  getFeatures,
+} from "./services/categoryServices";
+import { SignIn } from "./component/SignIn";
+
 import { StateContext } from "./config/store";
 import NavBar from "./component/NavBar";
 import Footer from "./component/Footer";
 import MapView from "./component/MapView";
 import About from "./component/About";
-import { SignIn } from "./component/SignIn";
 import { retrieveUserFromJWT } from "./services/userServices";
 import { Register } from "./component/SignUp";
 import reducer from "./config/reducer";
@@ -29,7 +35,7 @@ const App = () => {
   const [store, dispatch] = useReducer(reducer, initialState);
   const token = sessionStorage.getItem("jwt");
 
-  // const { signedInUser } = store;
+  const { signedInUser } = store;
 
   // hamburger menu toggle
   const [isOpen, setIsOpen] = useState(false);
@@ -56,6 +62,37 @@ const App = () => {
   /* USE EFFECTS */
   // Parks data from parkPostServices.js
   useEffect(() => {
+    getCategories()
+    .then((categories) =>
+      dispatch({ type: "setCategories", data: categories })
+    )
+    .catch((error) => console.log(error));
+
+    getFeatures()
+      .then((features) => dispatch({ type: "setFeatures", data: features }))
+      .catch((error) => console.log(error));
+
+    getAddresses()
+      .then((addresses) => dispatch({ type: "setAddresses", data: addresses }))
+      .catch((error) => console.log(error));
+
+    getAPark()
+    .then((parks) => {
+      dispatch({
+        type: "setParkPost",
+        data: parks,
+      });
+    })
+    .catch((error) => {
+      console.log(error.response);
+    })
+    .finally(() =>
+      dispatch({
+        type: "setLoading",
+        data: false,
+      })
+    );
+
     getParks()
       .then((parks) => {
         // console.log(parks)
@@ -76,24 +113,6 @@ const App = () => {
   }, []);
 
   // Park data from parkServices.js
-  useEffect(() => {
-    getAPark()
-      .then((parks) => {
-        dispatch({
-          type: "setParkPost",
-          data: parks,
-        });
-      })
-      .catch((error) => {
-        console.log(error.response);
-      })
-      .finally(() =>
-        dispatch({
-          type: "setLoading",
-          data: false,
-        })
-      );
-  }, []);
 
   useEffect(() => {
     getPosts()
@@ -155,13 +174,13 @@ const App = () => {
             <Route path="/" element={<MapView />}></Route>
             <Route path="/parks" element={<ParkPosts />}></Route>
             <Route path="/parks/:id" element={<ParkPost />} />
-            {/* {signedInUser === "admin" && (
+            {signedInUser === "admin" && (
               <Route path="/parks/new" element={<NewPark />} />
-            )} */}
-            <Route path="/parks/new" element={<NewPark />} />
+            )}
+            {/* <Route path="/parks/new" element={<NewPark />} /> */}
             <Route path="/about" element={<About />}></Route>
             <Route path="/auth/signin" element={<SignIn />}></Route>
-            <Route path="/signup" element={<Register />}></Route>
+            <Route path="/auth/signup" element={<Register />}></Route>
           </Routes>
           <Footer />
         </BrowserRouter>
