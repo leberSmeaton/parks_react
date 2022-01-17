@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import { useParams } from 'react-router';
 import { Link } from 'react-router-dom';
-import { getParkPost } from '../services/parkPostServices';
+import { getAPark } from '../services/parkPostServices';
 // import { useGlobalState } from '../utils/stateContext';
 import ParkComment from './ParkComment';
 import ParkMakeComment from './ParkMakeComment';
 import wine from '../data/wine';
 
 
-export default function Park() {
+export const ParkPost = (props) => {
   // const {store} = useGlobalState();
   // const { parkPosts } = store;
   const [park, setPark] = useState(null);
@@ -16,8 +16,8 @@ export default function Park() {
   const {id} = useParams();
 
   useEffect(() => {
-    // getParkPost(parkPosts, id)
-    getParkPost(id)
+    // getAPark(parkPosts, id)
+    getAPark(id)
       .then(park => setPark(park))
       .catch(error => {
         console.log(error.response)

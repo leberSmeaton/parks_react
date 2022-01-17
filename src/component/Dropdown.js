@@ -1,6 +1,6 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
-import { useGlobalState } from '../utils/stateContext';
+import { useGlobalState } from '../config/store';
 
 const Dropdown = ({isOpen, toggle}) => {
   const {store} = useGlobalState();

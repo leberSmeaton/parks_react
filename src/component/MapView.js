@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 // import { useParams } from 'react-router'; 
-// import { getParkPost } from '../services/parkPostServices';
-import { useGlobalState } from '../utils/stateContext'
+// import { getAPark } from '../services/parkPostServices';
+import { useGlobalState } from '../config/store';
 import {Link} from 'react-router-dom';
 import {
   GoogleMap,

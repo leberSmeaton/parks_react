@@ -1,8 +1,8 @@
 import React from 'react'
-import { useGlobalState } from '../utils/stateContext'
+import { useGlobalState } from '../config/store';
 import { ListPreview } from './ListPreview';
 
-export default function ParkPosts() {
+const ParkPosts = (props) => {
   const loading = false
   const {store} = useGlobalState();
   const {parkPosts} = store;
@@ -37,3 +37,5 @@ export default function ParkPosts() {
     </>
   )
 }
+
+export default ParkPosts;
