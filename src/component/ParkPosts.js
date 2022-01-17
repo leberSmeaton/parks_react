@@ -16,24 +16,26 @@ const ParkPosts = (props) => {
 
   return (
     <>
-      <br></br>
-      <h2 style={{fontWeight: "bold", fontSize: "30px"}}>All the parks</h2>
-      <br></br>
-      <hr></hr>
-      {/* This button isn't used atm */}
-      {/* <button onClick={sortAZ}>Sort A-Z</button> */}
-      {
-      loading
-      ?
-      (<p>Loading</p>)
-      :
-      (<div>
-        {parkPosts
-          // .sort((a, b) => a.park_name.localeCompare(b.park_name))
-          .map(park => (<ListPreview key={park.id} park={park} />))
-        }
-      </div>)
+      <div>
+          <br></br>
+        <h1>All the parks</h1>
+        <br></br>
+        <hr></hr>
+        {/* This button isn't used atm */}
+        {/* <button onClick={sortAZ}>Sort A-Z</button> */}
+        {
+        loading
+        ?
+        (<p>Loading</p>)
+        :
+        (<div>
+          {parkPosts
+            // .sort((a, b) => a.park_name.localeCompare(b.park_name))
+            .map(park => (<ListPreview key={park.id} park={park} />))
+          }
+        </div>)
       }
+      </div>
     </>
   )
 }
