@@ -36,20 +36,24 @@ export const SignIn = (props) => {
     }
 
     return(
-    <form onSubmit={handleSubmit}>
-         {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
-        <Block>
-            <Label>Login</Label>
-            <Input  onChange={handleChange} type="text" name="signin" placeholder="Enter email" value={formValues.signin} />
-        </Block>
-        <Block>
-            <Label>Password</Label>
-            <Input onChange={handleChange} type="password" name="password" placeholder="Enter email" value={formValues.password} />
-        </Block>
-        <Block>
-            <InputButton type="submit" value="Log In" />
-        </Block>
-    </form>
+    <div className='log-container'>
+        <img className='park-img' src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" />
+        <form className='log-in-form' onSubmit={handleSubmit}>
+            {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
+            <Block>
+                <Label>Login</Label>
+                <Input  onChange={handleChange} type="text" name="signin" placeholder="Enter email" value={formValues.signin} />
+            </Block>
+            <Block>
+                <Label>Password</Label>
+                <Input onChange={handleChange} type="password" name="password" placeholder="Enter email" value={formValues.password} />
+            </Block>
+            <Block className=''>
+                <InputButton className='' type="submit" value="Log In" />
+            </Block>
+        </form>
+    </div>
+    
    )
 
  }

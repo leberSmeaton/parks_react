@@ -80,13 +80,13 @@ section h2 {
 
 /* Sign In/Sign Up */
 
-.sign-container {
+.log-container {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex pl-8 pb-14 tracking-widest leading-loose;
+  @apply flex pl-8 pt-14 pb-44 tracking-widest leading-loose;
 }
 
-.sign-in-form {
+.log-in-form {
   @apply px-14 w-1/2;
 }
 
@@ -98,6 +98,6 @@ label {
   @apply flex space-x-4 pt-14;
 }
 
-button {
+.button {
   @apply bg-green-800 hover:bg-green-600 text-white font-bold py-2 px-4 border border-zinc-800 rounded;
 }
