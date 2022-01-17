@@ -1,4 +1,4 @@
-export default function reducer(state, action) {
+const stateReducer = (state, action) => {
   switch(action.type) {
     case 'setParkPosts':{
       return {
@@ -85,3 +85,4 @@ export default function reducer(state, action) {
     default: return state
   } 
 }
+export default stateReducer
