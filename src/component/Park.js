@@ -6,6 +6,7 @@ import { getAPark } from '../services/parkPostServices';
 import ParkComment from './ParkComment';
 import ParkMakeComment from './ParkMakeComment';
 import wine from '../data/wine';
+import cheese from '../data/cheese';
 
 
 export const ParkPost = (props) => {
@@ -45,7 +46,7 @@ export const ParkPost = (props) => {
         <br />
         <li>
           <h4>Pair your picnic with...</h4>
-          <p>cheese pair: {park.cheese}</p>
+          <p>cheese pair: {cheese[Math.floor(Math.random()*cheese.length)]}</p>
           <p>wine pair: {wine[Math.floor(Math.random()*wine.length)]}</p>
         </li>
         <br />
