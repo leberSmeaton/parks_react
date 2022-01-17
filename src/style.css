@@ -89,12 +89,6 @@ div h1 {
 .log-container {
   font-family: 'Rubik',
   sans-serif;
-  @apply flex pl-8 pt-14 pb-44 tracking-widest leading-loose;
-}
-
-.signup-container {
-  font-family: 'Rubik',
-    sans-serif;
   @apply flex pl-8 pb-32 tracking-widest leading-loose;
 }
 
@@ -103,6 +97,7 @@ div h1 {
 }
 
 label {
+  width: 300px;
   @apply font-bold;
 }
 
