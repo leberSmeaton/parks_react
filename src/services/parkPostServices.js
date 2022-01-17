@@ -1,22 +1,11 @@
 // import posts from '../data/posts';
-
 // import parks from '../data/parks';
 
 import picnicAPI from '../config/api';
 
-// we don't need this for id and date when database is connected
 
-// PARKS
-// export const getParkPosts = () => {
-//   // faking a fetch request
-//   return new Promise((resolve, reject) => {
-//     setTimeout(() => {
-//       resolve(parks)
-//     }, 2000)
-//   })
-// }
 
-export const getParkPosts = async() => {
+export const getParks = async() => {
   try {
     const response = await picnicAPI.get('/parks')
     // console.log("response: " + response);
@@ -28,7 +17,7 @@ export const getParkPosts = async() => {
   }
 }
 
-// export const getParkPost = (parks, id) => {
+// export const getAPark = (parks, id) => {
 //   return new Promise((resolve, reject) => {
 //     setTimeout(() => {
 //       resolve(parks.sort(park => park.id === parseInt(id)))
@@ -36,15 +25,13 @@ export const getParkPosts = async() => {
 //   })
 // }
 
-export const getParkPost = async (id) => {
+export const getAPark = async (id) => {
   try {
     const response = await picnicAPI.get('/parks/' + id)
-    // const response = await picnicAPI.get('/parks/' + park_id) // 
-    // const response = await picnicAPI.get('/park') // ????????
     console.log(response);
     return response.data;
   } catch (err) {
-    console.log("Get Park Post " + err)
+    console.log("Get Park: " + err)
     throw err
   }
 }
@@ -119,9 +106,9 @@ export const getPost = async (id) => {
   // }
 
 // CREATE/POST COMMENT
-export const createNewParkPost = async (parkPostObject) => {
+export const createNewPark = async (parkPostObject) => {
   try {
-    const response = await picnicAPI.post('/posts', parkPostObject)
+    const response = await picnicAPI.post('/parks/new', parkPostObject)
     return response.data;
   } catch (err) {
     console.log("Create New Park Post " + err)

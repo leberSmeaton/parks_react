@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import { useNavigate } from 'react-router';
-import { useGlobalState } from '../utils/stateContext';
-import { createNewParkPost } from '../services/parkPostServices';
+import { useGlobalState } from '../config/store';
+import { createNewPark } from '../services/parkPostServices';
 import { parseError } from '../config/api';
 
 export default function ParkMakeComment() {
@@ -23,7 +23,7 @@ export default function ParkMakeComment() {
 
   function addNewParkPost(parkPostObject) {
     setLoading(true)
-    createNewParkPost(parkPostObject)
+    createNewPark(parkPostObject)
       .then(newParkPost => {
         console.log(newParkPost);
         dispatch({

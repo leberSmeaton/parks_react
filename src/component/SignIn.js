@@ -1,101 +1,55 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import { signInUser } from '../services/userServices';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router';
 import { parseError } from '../config/api';
+import { useGlobalState } from '../config/store';
+import { signInUser } from '../services/userServices';
+import { Block, InputButton, Label, Input } from '../styled-components'
 
-export default function SignIn(props) {
-  const initialValues = {
-    username: "",
-    password: ""
-  }
 
-  const navigate = useNavigate();
-
-  const [formUserValues, setUserFormValues] = useState(initialValues)
-  const [errorMessage, setErrorMessage] = useState("")
-
-  function handleChange(event) {
-    setUserFormValues({
-      ...formUserValues,
-      [event.target.name]: event.target.value
-    })
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    signInUser(formUserValues)
-      .then(response => {
-        dispatchEvent({
-          type: "setSignedInUser",
-          data: response.username
+export const SignIn = (props) => {
+    const initialValues = {signin: "", password: ""};
+    const [formValues, setFormValues] = useState(initialValues);
+    const [errorMessage, setErrorMessage] = useState("")
+    const {dispatch} = useGlobalState()
+    const navigate = useNavigate()
+    
+    function handleChange(event) {
+        setFormValues({
+            ...formValues,
+            [event.target.name]: event.target.value
         })
-        dispatchEvent({
-          type: "setJWT",
-          data: response.jwt
-        })
-        navigate("/")
-      })
-      .catch(error => {
-        const message = parseError(error);
-        setErrorMessage(message);
-      })
-  }
+    }
 
-  return (
-    <>
-      <section>
-        <h2>Sign In</h2>
-        <div className='sign-container'>
-          <img className='park-img'  src={process.env.PUBLIC_URL + '/outdoorcinema_3.jpeg'} alt="people at an outdoor cinema" />
-          {/* <form onSubmit={handleSubmit}> */}
-          <form onSubmit={handleSubmit}>
-            {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
-            <div className='sign-in-form'>
-              <label>
-                Username
-                <input
-                  id="username"
-                  type="username"
-                  name="username"
-                  placeholder="Enter Username"
-                  // value={username}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Password
-                <input
-                  id="password"
-                  type="password"
-                  name="password"
-                  placeholder="Enter password"
-                  // value={password}
-                  onChange={handleChange}
-                />
-              </label>
-              {/* <label>
-                Password Confirmation
-                <input
-                  id="password_confirmation"
-                  // value={password_confirmation}
-                  // onChange={(e) => setPasswordConfirmation(e.currentTarget.value)}
-                />
-              </label> */}
-              <div className='buttons'>
-                <div>
-                  <button>
-                  Sign In
-                  </button>
-                </div>
-                <div>
-                  <button><Link to="/signup">Create an account</Link></button>
-                </div>
-              </div>
-            </div>
-          </form>
-        </div>
-      </section>
-      
-    </>
-  )
-}
+    function handleSubmit(event) {
+        event.preventDefault();
+        signInUser(formValues)
+            .then(response  => {
+                console.log(response);
+                dispatch({type:"setSignedInUser", data: response.username});
+                dispatch({type:"setJWT", data: response.jwt});
+                navigate("/")
+            })
+            .catch(error =>  {
+                const message = parseError(error);
+                setErrorMessage(message);
+            })
+    }
+
+    return(
+    <form onSubmit={handleSubmit}>
+         {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
+        <Block>
+            <Label>Login</Label>
+            <Input  onChange={handleChange} type="text" name="signin" placeholder="Enter email" value={formValues.signin} />
+        </Block>
+        <Block>
+            <Label>Password</Label>
+            <Input onChange={handleChange} type="password" name="password" placeholder="Enter email" value={formValues.password} />
+        </Block>
+        <Block>
+            <InputButton type="submit" value="Log In" />
+        </Block>
+    </form>
+   )
+
+ }

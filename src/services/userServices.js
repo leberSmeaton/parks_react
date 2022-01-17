@@ -1,27 +1,26 @@
 import picnicAPI from "../config/api"
 
-export const signInUser = async (signInDetails) => {
+export const signInUser = async (logInDetails) => {
   try {
-    const response = await picnicAPI.get('/auth/signin', signInDetails)
-    return response.data
-  } catch(err) {
-    console.log("Sign In User " + err)
-    throw err
+    const response = await picnicAPI.post("/auth/signin", logInDetails);
+    return response.data;
+  } catch (error) {
+    throw error;
   }
-}
-// export const signInUser = (signInDetails) => {
-//   return new Promise((resolve, reject) => {
-//     resolve(signInDetails.username)
-//   })
-// }
+};
 
 export const retrieveUserFromJWT = async () => {
+  const jwt = sessionStorage.getItem("jwt");
+  const response = await picnicAPI.post("/auth/signed_in_user", { jwt });
+  return response.data;
+};
+
+
+export const createNewUser = async (userObject) => {
   try {
-    const jwt = sessionStorage.getItem('jwt')
-    const response = await picnicAPI.post('/auth/signed_in_user', {jwt: jwt})
-    return response.data
-  } catch(err) {
-    console.log("Retrieve user from JWT " + err)
-    throw err
+    const response = await picnicAPI.post("auth/signup", userObject);
+    return response.data;
+  } catch (err) {
+    throw err;
   }
-}
+};
