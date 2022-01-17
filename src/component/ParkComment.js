@@ -1,44 +1,47 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 // import React, {useEffect} from 'react';
-// import { useParams } from 'react-router';
+import { useParams } from 'react-router';
 import Moment from 'react-moment';
-import {useGlobalState} from '../utils/stateContext'
-// import { getPosts } from '../services/parkPostServices';
+// import {useGlobalState} from '../utils/stateContext'
+import { getPosts } from '../services/parkPostServices';
 
 export default function ParkComment() {
-  const { store } = useGlobalState();
+  // const { store } = useGlobalState();
   // const { store, dispatch } = useGlobalState();
-  const { posts, loading } = store;
-  // const [post, setPost] = useState([]);
-  // const [loading, setLoading] = useState(true);
+  // const { posts, loading } = store;
+  const [post, setPost] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const {id} = useParams();
 
-  // useEffect(() => {
-  //   getPosts()
-  //     .then(posts => {
-  //       console.log(posts)
-  //       dispatch({
-  //         type: 'setPost',
-  //         data: posts
-  //       })
-  //     })
-  //     .catch(err => console.log(err))
-  //     .finally(() => 
-  //       dispatch({
-  //         type: 'setLoading',
-  //         data: false
-  //       })  
-  //     )
-  // }, [posts])
+  useEffect(() => {
+    getPosts(id)
+      .then(post => setPost(post))
+      .catch(error => {
+        console.log(error.response)
+      })
+      .finally(() => setLoading(false))
+  }, [id])
 
-  if(!posts) {
-    return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find your posts.</p>) 
+
+  if(!post) {
+    return loading ? (<p>Loading...</p>): (<p>Oops, couldn't find any comments for this park</p>) 
   }
 
   return (
     <>
-      <h4>user_id: {posts.user_id} || park_id: {posts.park_id}</h4>
-      <Moment fromNow>{posts.updated_at}</Moment> - <Moment format="DD/MM/YYYY">{posts.updated_at}</Moment>
-      <p>park_comment: {posts.park_comment}</p>
+      <h2 style={{fontWeight: "bold", fontSize: "20px"}}>Comments</h2>
+      {post.map(comment => (
+        <>
+          <h4>{comment.user.username} thinks:</h4>
+          <p>{comment.comment}</p>
+          <p>Rating: {"⭐️".repeat(comment.rating)} out of ⭐️⭐️⭐️⭐️⭐️</p>
+          <p style={{fontSize: "11px"}}>Updated: <Moment fromNow>{comment.updated_at}</Moment> - Posted on: <Moment style={{fontSize: "11px"}} format="DD/MM/YYYY">{comment.updated_at}</Moment></p>
+          <br></br>
+          <hr></hr>
+        </>
+      ))}    
     </>
   )
 }
+
+

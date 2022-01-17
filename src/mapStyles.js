@@ -1,6 +1,14 @@
 let mapStyles = []
 mapStyles = [
     {
+        "featureType": "poi.business",
+        "stylers": [
+            {
+                "visibility": "off"
+            }
+        ]
+    },
+    {
         "featureType": "water",
         "elementType": "geometry",
         "stylers": [

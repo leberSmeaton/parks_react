@@ -1,94 +1,61 @@
-import React, {useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
-import { signInUser } from '../services/userServices';
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router';
 import { parseError } from '../config/api';
+import { useGlobalState } from '../config/store';
+import { signInUser } from '../services/userServices';
+import { Block, InputButton, Label, Input } from '../styled-components'
 
-export default function SignIn(props) {
-  const initialValues = {
-    username: "",
-    password: ""
-  }
 
-  const navigate = useNavigate();
-
-  const [formUserValues, setUserFormValues] = useState(initialValues)
-  const [errorMessage, setErrorMessage] = useState("")
-
-  function handleChange(event) {
-    setUserFormValues({
-      ...formUserValues,
-      [event.target.name]: event.target.value
-    })
-  }
-
-  function handleSubmit(event) {
-    event.preventDefault()
-    signInUser(formUserValues)
-      .then(response => {
-        dispatchEvent({
-          type: "setSignedInUser",
-          data: response.username
+export const SignIn = (props) => {
+    const initialValues = {signin: "", password: ""};
+    const [formValues, setFormValues] = useState(initialValues);
+    const [errorMessage, setErrorMessage] = useState("")
+    const {dispatch} = useGlobalState()
+    const navigate = useNavigate()
+    
+    function handleChange(event) {
+        setFormValues({
+            ...formValues,
+            [event.target.name]: event.target.value
         })
-        dispatchEvent({
-          type: "setJWT",
-          data: response.jwt
-        })
-        navigate("/")
-      })
-      .catch(error => {
-        const message = parseError(error);
-        setErrorMessage(message);
-      })
-  }
+    }
 
-  return (
-    <>
-      <section>
-        <h2>Sign In</h2>
-        <div>
-          <img src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" style={{ width: '100%' }} />
-          {/* <form onSubmit={handleSubmit}> */}
-          <form onSubmit={handleSubmit}>
-            {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
-            <div>
-              <label>
-                Username
-                <input
-                  id="username"
-                  type="username"
-                  name="username"
-                  placeholder="Enter Username"
-                  // value={username}
-                  onChange={handleChange}
-                />
-              </label>
-              <label>
-                Password
-                <input
-                  id="password"
-                  type="password"
-                  name="password"
-                  placeholder="Enter password"
-                  // value={password}
-                  onChange={handleChange}
-                />
-              </label>
-              {/* <label>
-                Password Confirmation
-                <input
-                  id="password_confirmation"
-                  // value={password_confirmation}
-                  // onChange={(e) => setPasswordConfirmation(e.currentTarget.value)}
-                />
-              </label> */}
-              <button type="submit" className="primary">
-                Sign In
-              </button>
-            </div>
-          </form>
-        </div>
-      </section>
-      <h2><Link to="/signup">Create an account</Link></h2>
-    </>
-  )
-}
+    function handleSubmit(event) {
+        event.preventDefault();
+        signInUser(formValues)
+            .then(response  => {
+                console.log(response);
+                dispatch({type:"setSignedInUser", data: response.username});
+                dispatch({type:"setJWT", data: response.jwt});
+                navigate("/")
+            })
+            .catch(error =>  {
+                const message = parseError(error);
+                setErrorMessage(message);
+            })
+    }
+
+    return(
+    <div>
+      <h1>Welcome back!</h1>
+      <div className='log-container'>
+            <img className='park-img' src={process.env.PUBLIC_URL + '/melb-park-sunset.webp'} alt="melbourne google map" />
+            <form className='log-form' onSubmit={handleSubmit}>
+                {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
+                <Block>
+                    <Label>Login</Label>
+                    <Input  onChange={handleChange} type="text" name="signin" placeholder="Enter username or email" value={formValues.signin} style={{ width:"300px" }} />
+                </Block>
+                <Block>
+                    <Label>Password</Label>
+                    <Input onChange={handleChange} type="password" name="password" placeholder="Enter password" value={formValues.password} style={{ width:"300px" }} />
+                </Block>
+                <Block>
+                    <InputButton className='' type="submit" value="Log In"  />
+                </Block>
+            </form>
+      </div>
+    </div>
+   )
+
+ }

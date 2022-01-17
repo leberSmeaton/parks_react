@@ -11,13 +11,14 @@ export const ListPreview = (props) => {
 
   return (
     <>
-      <Link to={`/parks/${park.id}`}><h4 style={{fontWeight: "bold"}}>{park.name}</h4></Link>
-      {/* <h4>name: {park.name} || All Nations</h4> */}
-      <p>addresssss: {park.address.number ? park.address.number : null} {park.address.street}, {park.address.suburb}, {park.address.postcode}</p>
-      <p>category: {park.category.name}</p>
-      <p>coords: {park.latitude}, {park.longitude}</p>
-      <p>feature: {park.feature.name}</p>
-      <hr/>
+      <div className='list-container'>
+          <Link to={`/parks/${park.id}`}><h4 style={{fontWeight: "bold"}}>{park.name}</h4></Link>
+          {/* <h4>name: {park.name} || All Nations</h4> */}
+          <p>address: {park.address.number ? park.address.number : null} {park.address.street}, {park.address.suburb}, {park.address.postcode}</p>
+          <p>category: {park.category.name}</p>
+          <br></br>
+          <hr/>
+      </div>
     </>
   )
 }
