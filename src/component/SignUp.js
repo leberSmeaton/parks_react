@@ -26,10 +26,9 @@ export const Register = (props) => {
     createNewUser(userObject)
       .then(newUser => {
         console.log(newUser)
-        dispatch({
-          type: "setUsers",
-          data: [...users, newUser]
-        })
+        dispatch(newUser)
+        dispatch({type:"setSignedInUser", data: newUser.username});
+        dispatch({type:"setJWT", data: newUser.jwt});
         setLoading(false)
         navigate("/")
       })
