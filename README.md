@@ -2,13 +2,27 @@
 
 > _Nothing is better than a picnic in Vic!_
 
-[Deployed Picnic Victoria App](https://picnic-vic.netlify.app/) | [PicnicVic React Repo](https://github.com/PicnicVic) | [Parks Rails_API Repo](https://github.com/PicnicVic/Rails_API)
+[Deployed Picnic Victoria App](https://picnic-vic.netlify.app/) | [PicnicVic Repo](https://github.com/PicnicVic) | [PicnicVic Repo](https://github.com/PicnicVic/parks_react) | [Parks Rails_API Repo](https://github.com/PicnicVic/Rails_API)
 
 **ASSESSMENT:** Full Stack Application - Part B - for Coder Academy 
+
+[Past Assignment T3A2-A - Full Stack App (Part A) - documentation](https://github.com/PicnicVic/Main_T3A2-A)
+
+[T3A2-B - Full Stack App (Part B) Deliverable - README.MD documentation](https://github.com/PicnicVic/.github)
 
 **DEV TEAM:** Karla Tolentino, Ruilai Zhang, Matthew Liu, Bella Leber-Smeaton
 
 **For:** Parks Victoria - Victorian State Government
+
+**About:** Picnic Victoria is a React / Rails full-stack responsive web application, coupled with our Picnic Victoria inner city park registry API, ['Parks_API'](https://github.com/PicnicVic/Rails_API).
+The 'Parks_API' populated with new park data is paired and marked up with the existing Google Maps API.
+
+**Purpose:** In a world too familiar with the pandemic we now know more than ever that we need to connect with our friends and family, safely and in the real world outdoors.
+_We need to utilise our green open spaces to enrich our lives._
+
+To meet calls and pressure that local councils and the State Government aren't providing enough green space, Parks Victoria created Picnic Victoria, For small and large parks alike!
+
+The Picnic Victoria app provides detailed park amenity information to help facilitate a family picnic to a skate park hangout.
 
 ![website landing page screenshot](./docs/landing2.png)
 (Map View - Landing Page)
@@ -48,42 +62,3 @@
 - "postcss": "^8.4.5",
 - "postcss-cli": "^9.1.0",
 - "tailwindcss": "^3.0.2"
-
-#### **Team Work & Source Control Methodology:**
-
-Scrumban methodology
-
-![Scrumban methodology](./docs/pm1.png)
-
-Mini Golf at City Library for EOY Christmas celebrations after a day of studying at city library.
-
-#### **User Testing:**
-
-![Test Park being created in the Admin]()
-(Pete from Parks Victoria uploading a park via the Admin signin, success full Creation.)
-![Test Park error in the Admin]()
-(Test Park error warning)
-
-#### **Testing Backend:**
-
-![screenshot of rspec tests](./docs/rspectest1.png)
-
-![screenshot of working tests](./docs/rspectest2.png)
-
-#### **Testing Frontend:**
-
-![Testing the Landing Page Map View](./docs/test1.png)
-(Testing the Landing Page Map View)
-
-![Testing the Admin View](./docs/test2.png)
-(Testing the Admin View)
-
-![Testing the SignIn View](./docs/test3.png)
-(Testing the SignIn View)
-
-#### **Manual Testing:**
-
-[Manual Testing Spreadsheet](https://github.com/PicnicVic/parks_react/blob/dev/docs/manual_testing_spreadsheet.numbers)
-
-![Manual Testing example](./docs/manualTest1.png)
-(Example of Manual Testing Sheet located in [/docs](./docs/manual_testing_spreadsheet.numbers) folder.)
