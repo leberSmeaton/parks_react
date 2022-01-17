@@ -4,7 +4,7 @@
 
 [Deployed Picnic Victoria App](https://picnic-vic.netlify.app/) | [PicnicVic React Repo](https://github.com/PicnicVic) | [Parks Rails_API Repo](https://github.com/PicnicVic/Rails_API)
 
-**ASSESSMENT:** Full Stack Application - Part B - for Coder Academy
+**ASSESSMENT:** Full Stack Application - Part B - for Coder Academy 
 
 **DEV TEAM:** Karla Tolentino, Ruilai Zhang, Matthew Liu, Bella Leber-Smeaton
 
