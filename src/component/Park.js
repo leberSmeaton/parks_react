@@ -34,38 +34,40 @@ export const ParkPost = (props) => {
 
   return (
     <>
-      <ul>
-        <li>
-          <p></p>
-          <h4 style={{fontWeight: "bold", fontSize: "30px"}}>{park.park_icon} {park.name}</h4>
-          <p>address: {park.address.number ? park.address.number : null} {park.address.street}, {park.address.suburb}, {park.address.postcode}</p>
-          <p>coords: {park.latitude}, {park.longitude}</p>
-          <p>category: {park.category.name}</p>
-          <p>feature: {park.feature.name}, toilets, cafe near by</p>
-        </li>
-        <br />
-        <li>
-          <h4>Pair your picnic with...</h4>
-          <p>cheese pair: {cheese[Math.floor(Math.random()*cheese.length)]}</p>
-          <p>wine pair: {wine[Math.floor(Math.random()*wine.length)]}</p>
-        </li>
-        <br />
-        <hr />
-        {/* <li>
-          <h4><strong>List Existing Comments Here</strong></h4>
-        </li> */}
-        <li>
-          <ParkComment />
-        </li>
-        <hr />
-        <li>
-          <ParkMakeComment />
-        </li>
-        <br />
-        <li>
-          <strong><Link to="/parks">Back to Park List</Link></strong>
-        </li>
-      </ul>
+      <div className='list-container'>
+          <ul>
+          <li>
+            <p></p>
+            <h4 style={{fontWeight: "bold", fontSize: "30px"}}>{park.park_icon} {park.name}</h4>
+            <p>Address: {park.address.number ? park.address.number : null} {park.address.street}, {park.address.suburb}, {park.address.postcode}</p>
+            <p>Coords: {park.latitude}, {park.longitude}</p>
+            <p>Category: {park.category.name}</p>
+            <p>Feature: {park.feature.name}, toilets, cafe near by</p>
+          </li>
+          <br />
+          <li>
+            <h4>Pair your picnic with...</h4>
+            <p>Cheese pair: {cheese[Math.floor(Math.random()*cheese.length)]}</p>
+            <p>Wine pair: {wine[Math.floor(Math.random()*wine.length)]}</p>
+          </li>
+          <br />
+          <hr />
+          {/* <li>
+            <h4><strong>List Existing Comments Here</strong></h4>
+          </li> */}
+          <li>
+            <ParkComment />
+          </li>
+          <hr />
+          <li>
+            <ParkMakeComment />
+          </li>
+          <br />
+          <li>
+            <strong><Link to="/parks">Back to Park List</Link></strong>
+          </li>
+        </ul>
+      </div>
     </>
   )
 }
