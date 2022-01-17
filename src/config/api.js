@@ -5,7 +5,9 @@ const picnicAPI = axios.create({
   //   /* 
   //     Get Park Post Error: Request failed with status code 404
   //   */
-  baseURL: "http://localhost:3000" 
+  // baseURL: "http://localhost:3000" 
+  baseURL: process.env.REACT_APP_PICNIC_API
+  
 })
 
 // cb function uses the request to add jwt to header
