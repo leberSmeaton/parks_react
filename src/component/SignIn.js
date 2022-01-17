@@ -39,7 +39,7 @@ export const SignIn = (props) => {
     <div>
       <h1>Welcome back!</h1>
       <div className='log-container'>
-            <img className='park-img' src={process.env.PUBLIC_URL + '/park_image1.jpg'} alt="melbourne google map" />
+            <img className='park-img' src={process.env.PUBLIC_URL + '/melb-park-sunset.webp'} alt="melbourne google map" />
             <form className='log-form' onSubmit={handleSubmit}>
                 {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
                 <Block>
