@@ -177,6 +177,9 @@ const App = () => {
             {signedInUser === "admin" && (
               <Route path="/parks/new" element={<NewPark />} />
             )}
+            {signedInUser === "admin" && (
+              <Route path="/parks/:id/edit" element={<NewPark />} />
+            )}
             {/* <Route path="/parks/new" element={<NewPark />} /> */}
             <Route path="/about" element={<About />}></Route>
             <Route path="/auth/signin" element={<SignIn />}></Route>

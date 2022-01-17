@@ -115,3 +115,24 @@ export const createNewPark = async (parkPostObject) => {
     throw err
   }
 }
+
+
+export const updateAPark = async(parkObject) => {
+  try {
+    const response = await picnicAPI.put('/parks/:id', parkObject)
+    return response.data;
+  } catch (err) {
+    console.log("Updated park:  " + err)
+    throw err
+  }
+}
+
+export const deleteAPark = async(parkObject) => {
+  try {
+    const response = await picnicAPI.delete('/parks/:id', parkObject)
+    return response.data;
+  } catch (err) {
+    console.log("Deleted park:  " + err)
+    throw err
+  }
+}
