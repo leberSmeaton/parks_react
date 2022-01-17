@@ -44,11 +44,11 @@ export const SignIn = (props) => {
                 {errorMessage && <p style={{color: 'red'}}>{errorMessage}</p>}
                 <Block>
                     <Label>Login</Label>
-                    <Input  onChange={handleChange} type="text" name="signin" placeholder="Enter email" value={formValues.signin} style={{ width:"300px" }} />
+                    <Input  onChange={handleChange} type="text" name="signin" placeholder="Enter username or email" value={formValues.signin} style={{ width:"300px" }} />
                 </Block>
                 <Block>
                     <Label>Password</Label>
-                    <Input onChange={handleChange} type="password" name="password" placeholder="Enter email" value={formValues.password} style={{ width:"300px" }} />
+                    <Input onChange={handleChange} type="password" name="password" placeholder="Enter password" value={formValues.password} style={{ width:"300px" }} />
                 </Block>
                 <Block>
                     <InputButton className='' type="submit" value="Log In"  />

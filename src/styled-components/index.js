@@ -3,13 +3,18 @@ import styled from "styled-components";
 import {Link} from 'react-router-dom'
 
 export const InputButton = styled.input `
-    background-color: #EF8D32;
+    background-color: #AE431E;
     color: white;
     padding: .2em;
     border: none;
     font-size: 1.2em;
     width: 150px;
     cursor: pointer;
+    border-radius: 12px;
+    &:hover{
+        background-color: #D06224;
+    }
+
 `
 export const Input = styled.input `
     width: 60vw;
