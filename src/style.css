@@ -50,6 +50,12 @@ section h2 {
   @apply text-2xl font-bold p-8 tracking-widest;
 }
 
+div h1 {
+  font-family: 'Rubik',
+  sans-serif;
+  @apply text-2xl font-bold p-8 tracking-widest;
+}
+
 .about-container {
   font-family: 'Rubik',
   sans-serif;
@@ -86,7 +92,13 @@ section h2 {
   @apply flex pl-8 pt-14 pb-44 tracking-widest leading-loose;
 }
 
-.log-in-form {
+.signup-container {
+  font-family: 'Rubik',
+    sans-serif;
+  @apply flex pl-8 pb-32 tracking-widest leading-loose;
+}
+
+.log-form {
   @apply px-14 w-1/2;
 }
 
