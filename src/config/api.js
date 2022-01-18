@@ -3,9 +3,10 @@ import axios from "axios";
 const picnicAPI = axios.create({
 
   baseURL: process.env.REACT_APP_PICNIC_API
-
+})
 
 // cb function uses the request to add jwt to header
+// Should work now
 picnicAPI.interceptors.request.use(req => {
   const jwt = sessionStorage.getItem('jwt');
   if (jwt) {
