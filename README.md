@@ -24,23 +24,26 @@ To meet calls and pressure that local councils and the State Government aren't p
 
 The Picnic Victoria app provides detailed park amenity information to help facilitate a family picnic to a skate park hangout.
 
+**Map View - Landing Page:** GET "/parks"
 ![website landing page screenshot](./docs/landing2.png)
-(Map View - Landing Page)
 
+**List View:** GET "/parks"
 ![park list screenshot](./docs/list1.png)
-(List View)
 
+**Park id 1 View:** GET "/parks/1"
 ![park details screenshot](./docs/park1.png)
-(Park View)
 
+**Admin create park View:** POST "/parks/new"
 ![admin create park screenshot](./docs/admin1.png)
-(Admin View)
 
+**About View:** "/about"
 ![about screenshot](./docs/about1.png)
-(About View)
 
+**User SignIn:** POST "/auth/signin"
 ![signin screenshot](./docs/signin1.png)
-(SignIn View)
+
+**User SignUp View** POST "/auth/signin"
+![signin screenshot](./docs/signin1.png)
 
 #### **Dependencies:**
 
