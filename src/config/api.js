@@ -6,6 +6,7 @@ const picnicAPI = axios.create({
 })
 
 // cb function uses the request to add jwt to header
+// Should work now
 picnicAPI.interceptors.request.use(req => {
   const jwt = sessionStorage.getItem('jwt');
   if (jwt) {
